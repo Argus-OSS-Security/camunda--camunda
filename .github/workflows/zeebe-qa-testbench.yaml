@@ -4,32 +4,33 @@
 # owner @camunda/core-features
 name: Zeebe QA Testbench run
 
-on:
-  workflow_dispatch:
-    inputs:
-      generation:
-        description: 'Specifies the generation template which should be used by the testbench run'
-        required: false
-        default: 'Camunda SNAPSHOT'
-        type: string
-      branch:
-        description: 'Specifies the branch, for which the QA Testbench run should be executed'
-        default: 'main'
-        required: false
-        type: string
-  workflow_call:
-    inputs:
-      generation:
-        description: 'Specifies the generation template which should be used by the testbench run'
-        required: false
-        default: 'Camunda SNAPSHOT'
-        type: string
-      branch:
-        description: 'Specifies the branch, for which the QA Testbench run should be executed'
-        default: 'main'
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       generation:
+#         description: 'Specifies the generation template which should be used by the testbench run'
+#         required: false
+#         default: 'Camunda SNAPSHOT'
+#         type: string
+#       branch:
+#         description: 'Specifies the branch, for which the QA Testbench run should be executed'
+#         default: 'main'
+#         required: false
+#         type: string
+#   workflow_call:
+#     inputs:
+#       generation:
+#         description: 'Specifies the generation template which should be used by the testbench run'
+#         required: false
+#         default: 'Camunda SNAPSHOT'
+#         type: string
+#       branch:
+#         description: 'Specifies the branch, for which the QA Testbench run should be executed'
+#         default: 'main'
+#         required: false
+#         type: string
+# 
 jobs:
 
   prepare:

@@ -6,27 +6,28 @@
 ---
 name: Gradle CI
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    paths:
-      - "**/src/main/**"
-      - "**/src/test/**"
-      - "**/src/it/**"
-      - "**/src/build/**"
-      - "**/pom.xml"
-      - "**/*.gradle.kts"
-      - "gradle.properties"
-      - "gradle/**"
-      - "gradlew"
-      - "gradlew.bat"
-      - ".github/scripts/gradle/**"
-      - ".github/actions/setup-build/**"
-      - ".github/workflows/gradle-ci.yml"
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     paths:
+#       - "**/src/main/**"
+#       - "**/src/test/**"
+#       - "**/src/it/**"
+#       - "**/src/build/**"
+#       - "**/pom.xml"
+#       - "**/*.gradle.kts"
+#       - "gradle.properties"
+#       - "gradle/**"
+#       - "gradlew"
+#       - "gradlew.bat"
+#       - ".github/scripts/gradle/**"
+#       - ".github/actions/setup-build/**"
+#       - ".github/workflows/gradle-ci.yml"
+#   workflow_dispatch: {}
+# 
 concurrency:
   cancel-in-progress: true
   group: ${{ format('{0}-{1}', github.workflow, github.ref == 'refs/heads/main' && github.sha || github.ref) }}

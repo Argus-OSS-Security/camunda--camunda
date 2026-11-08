@@ -3,15 +3,16 @@
 ---
 name: Statistics Daily
 
-on:
-  schedule:
-    - cron: '0 6 * * 2-5'  # Tuesdays to Fridays, to keep it actionable
-  pull_request:
-    paths:
-      - '.github/workflows/statistics-daily.yml'
-      - '.ci/scripts/ci/setup-medic-lookup.sh'
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '0 6 * * 2-5'  # Tuesdays to Fridays, to keep it actionable
+#   pull_request:
+#     paths:
+#       - '.github/workflows/statistics-daily.yml'
+#       - '.ci/scripts/ci/setup-medic-lookup.sh'
+#   workflow_dispatch: {}
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
   GHA_BEST_PRACTICES_LINTER: enabled

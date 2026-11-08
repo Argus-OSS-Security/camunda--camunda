@@ -3,24 +3,25 @@
 # owner: @camunda/c8-testing
 name: Camunda Process Test Compatibility Tests
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to check out for CPT tests (e.g., stable/8.8)'
-        required: true
-        type: string
-      camunda_image_version:
-        description: 'Camunda Docker image version (e.g., 8.9-SNAPSHOT).'
-        required: false
-        default: 'SNAPSHOT'
-        type: string
-      connectors_image_version:
-        description: 'Connectors Docker image version (e.g., 8.9-SNAPSHOT).'
-        required: false
-        default: 'SNAPSHOT'
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: 'Branch to check out for CPT tests (e.g., stable/8.8)'
+#         required: true
+#         type: string
+#       camunda_image_version:
+#         description: 'Camunda Docker image version (e.g., 8.9-SNAPSHOT).'
+#         required: false
+#         default: 'SNAPSHOT'
+#         type: string
+#       connectors_image_version:
+#         description: 'Connectors Docker image version (e.g., 8.9-SNAPSHOT).'
+#         required: false
+#         default: 'SNAPSHOT'
+#         type: string
+# 
 permissions: {}
 
 defaults:

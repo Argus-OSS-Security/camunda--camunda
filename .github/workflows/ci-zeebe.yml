@@ -5,20 +5,21 @@
 # owner: @camunda/core-features
 name: Zeebe CI
 
-on:
-  workflow_dispatch:
-    inputs:
-      stable-branch:
-        description: "Set to true if the change is running on a stable branch"
-        type: boolean
-        default: false
-  workflow_call:
-    inputs:
-      stable-branch:
-        description: "Set to true if the change is running on a stable branch"
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       stable-branch:
+#         description: "Set to true if the change is running on a stable branch"
+#         type: boolean
+#         default: false
+#   workflow_call:
+#     inputs:
+#       stable-branch:
+#         description: "Set to true if the change is running on a stable branch"
+#         type: boolean
+#         default: false
+# 
 defaults:
   run:
     # use bash shell by default to ensure pipefail behavior is the default

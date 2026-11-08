@@ -2,26 +2,27 @@
 # owner: @camunda/engineering-operations
 name: Update Identity Version
 
-on:
-  workflow_dispatch:
-    inputs:
-      identityVersion:
-        description: 'The identity version to update to, for example 8.3.11'
-        type: string
-        required: true
-      targetBranch:
-        description: 'The branch to update the identity version on, typically a release branch like release-8.3.15'
-        type: string
-        required: true
-      userSlackId:
-        description: 'The slack id of the user to notify on failure, no mention within the alert message if omitted'
-        type: string
-        required: false
-      dryRun:
-        description: 'Whether to perform a dry run where no changes pushed, defaults to true'
-        type: boolean
-        default: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       identityVersion:
+#         description: 'The identity version to update to, for example 8.3.11'
+#         type: string
+#         required: true
+#       targetBranch:
+#         description: 'The branch to update the identity version on, typically a release branch like release-8.3.15'
+#         type: string
+#         required: true
+#       userSlackId:
+#         description: 'The slack id of the user to notify on failure, no mention within the alert message if omitted'
+#         type: string
+#         required: false
+#       dryRun:
+#         description: 'Whether to perform a dry run where no changes pushed, defaults to true'
+#         type: boolean
+#         default: true
+# 
 env:
   GHA_BEST_PRACTICES_LINTER: enabled
 

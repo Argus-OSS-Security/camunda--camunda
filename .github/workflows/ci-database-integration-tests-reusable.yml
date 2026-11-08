@@ -5,127 +5,128 @@
 ---
 name: Database integration tests reusable
 
-on:
-  workflow_call:
-    inputs:
-      it-database-type:
-        required: true
-        type: string
-        description: The database type to be used during the integration tests. This is the enum value of DatabaseType in the MultiDbTest extension
-      database-type:
-        required: true
-        type: string
-        description: The name/type of the database. If it does not have a corresponding entry in the db/docker-compose.yml then also specify "database-container". Will be used in output descriptions.
-      database-container:
-        required: false
-        type: string
-        default: ""
-        description: The name of the database container to run.  Should have a corresponding entry in the db/docker-compose.yml.  Can be left empty if "database-type" happens to be the right value.
-      database-image-version:
-        required: false
-        type: string
-        description: The database docker image version to be used during the tests. Will be set as env variable IMAGE_VERSION. If not set, the default value from the docker-compose file will be used.
-      database-name:
-        required: true
-        type: string
-        description: The display name of the database, used in test artifact names and notifications.
-      physical-tenant:
-        required: false
-        type: string
-        default: ""
-        description: When set, runs the acceptance suite under this physical tenant by passing -Dtest.integration.camunda.physical-tenant=<value>.
-      physical-tenant-elasticsearch-url:
-        required: false
-        type: string
-        default: ""
-        description: >-
-          When set (together with physical-tenant), the PT's secondary storage is pointed at this
-          separate Elasticsearch instance instead of reusing the default tenant's connection, by
-          passing -Dtest.integration.camunda.physical-tenant.elasticsearch.url=<value>. Requires the
-          "elasticsearch-tenant" docker-compose service to be running.
-      physical-tenant-opensearch-url:
-        required: false
-        type: string
-        default: ""
-        description: >-
-          When set (together with physical-tenant), the PT's secondary storage is pointed at this
-          separate OpenSearch instance instead of reusing the default tenant's connection, by
-          passing -Dtest.integration.camunda.physical-tenant.opensearch.url=<value>. Requires the
-          "opensearch-tenant" docker-compose service to be running.
-      test-suite-name:
-        required: false
-        type: string
-        default: ""
-        description: >-
-          Short suite name appended to the job's display name (e.g. "identity" renders the job as
-          "elasticsearch - identity"). Leave empty to display the database type alone. Joined with
-          a non-slash separator because the GHA sidebar only displays the last " / "-separated
-          segment of the check name.
-      shard:
-        required: false
-        type: string
-        default: ""
-        description: >-
-          Name of this job's shard when a caller splits one suite across parallel jobs (e.g.
-          "client"). Appended to the job's display name, test artifact name, flaky-test matrix key
-          and build-status job name so the shards don't overwrite each other's results. Leave
-          empty for an unsharded suite.
-      maven-profiles:
-        required: false
-        type: string
-        default: "multi-db-test"
-        description: Comma-separated list of Maven profiles to activate during the test run (e.g., "multi-db-test", "history"). The profiles parallel-tests,extract-flaky-tests,skipFrontendBuild are always included.
-      test-type:
-        required: false
-        type: string
-        default: "database-integration-tests"
-        description: The test type used in artifact names and job descriptions (e.g., "database-integration-tests", "history-integration-tests").
-      test-type-label:
-        required: false
-        type: string
-        default: "Database"
-        description: Label for the test type used in artifact names and job descriptions (e.g., "Database", "History").
-      notify-slack-on-failure:
-        required: false
-        type: boolean
-        default: false
-        description: Whether to send a Slack notification on failure or cancellation.
-      runs-on:
-        required: false
-        type: string
-        default: "gcp-perf-core-16-default"
-      use-shared-distball:
-        required: false
-        type: boolean
-        default: false
-        description: >-
-          When true, restore the io.camunda SNAPSHOTs from the run-scoped GCS
-          artifact produced by a build-distball job (ci-build-distball-reusable.yml)
-          elsewhere in the same run, instead of running a local build-zeebe reactor.
-          Leave false if the calling run has no build-distball job, so the
-          build-zeebe fallback runs. See #52693 and #56931.
-      timeout-minutes:
-        required: false
-        type: number
-        default: 20
-        description: >-
-          Job timeout. A non-blocking, schedule/dispatch-only caller may raise it if its own
-          worst-case fork runtime needs more room than 20 minutes allows. Keep
-          failsafe-timeout-seconds in step with it so a stuck fork still fails inside the job budget.
-      failsafe-timeout-seconds:
-        required: false
-        type: number
-        default: 0
-        description: >-
-          Overrides the pom's default -D failsafe.timeout (max seconds a single Maven fork
-          may run before it's killed as hung), letting a wedged fork fail with a real report
-          instead of the job's timeout-minutes cancelling it. Leave 0 to use the pom's
-          default. Override only for callers whose worst-case fork runtime has been measured
-          against a different timeout-minutes.
-    outputs:
-      flakyTests:
-        description: "Flaky tests detected during database integration tests"
-        value: ${{ jobs.integration-tests.outputs.flakyTests }}
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       it-database-type:
+#         required: true
+#         type: string
+#         description: The database type to be used during the integration tests. This is the enum value of DatabaseType in the MultiDbTest extension
+#       database-type:
+#         required: true
+#         type: string
+#         description: The name/type of the database. If it does not have a corresponding entry in the db/docker-compose.yml then also specify "database-container". Will be used in output descriptions.
+#       database-container:
+#         required: false
+#         type: string
+#         default: ""
+#         description: The name of the database container to run.  Should have a corresponding entry in the db/docker-compose.yml.  Can be left empty if "database-type" happens to be the right value.
+#       database-image-version:
+#         required: false
+#         type: string
+#         description: The database docker image version to be used during the tests. Will be set as env variable IMAGE_VERSION. If not set, the default value from the docker-compose file will be used.
+#       database-name:
+#         required: true
+#         type: string
+#         description: The display name of the database, used in test artifact names and notifications.
+#       physical-tenant:
+#         required: false
+#         type: string
+#         default: ""
+#         description: When set, runs the acceptance suite under this physical tenant by passing -Dtest.integration.camunda.physical-tenant=<value>.
+#       physical-tenant-elasticsearch-url:
+#         required: false
+#         type: string
+#         default: ""
+#         description: >-
+#           When set (together with physical-tenant), the PT's secondary storage is pointed at this
+#           separate Elasticsearch instance instead of reusing the default tenant's connection, by
+#           passing -Dtest.integration.camunda.physical-tenant.elasticsearch.url=<value>. Requires the
+#           "elasticsearch-tenant" docker-compose service to be running.
+#       physical-tenant-opensearch-url:
+#         required: false
+#         type: string
+#         default: ""
+#         description: >-
+#           When set (together with physical-tenant), the PT's secondary storage is pointed at this
+#           separate OpenSearch instance instead of reusing the default tenant's connection, by
+#           passing -Dtest.integration.camunda.physical-tenant.opensearch.url=<value>. Requires the
+#           "opensearch-tenant" docker-compose service to be running.
+#       test-suite-name:
+#         required: false
+#         type: string
+#         default: ""
+#         description: >-
+#           Short suite name appended to the job's display name (e.g. "identity" renders the job as
+#           "elasticsearch - identity"). Leave empty to display the database type alone. Joined with
+#           a non-slash separator because the GHA sidebar only displays the last " / "-separated
+#           segment of the check name.
+#       shard:
+#         required: false
+#         type: string
+#         default: ""
+#         description: >-
+#           Name of this job's shard when a caller splits one suite across parallel jobs (e.g.
+#           "client"). Appended to the job's display name, test artifact name, flaky-test matrix key
+#           and build-status job name so the shards don't overwrite each other's results. Leave
+#           empty for an unsharded suite.
+#       maven-profiles:
+#         required: false
+#         type: string
+#         default: "multi-db-test"
+#         description: Comma-separated list of Maven profiles to activate during the test run (e.g., "multi-db-test", "history"). The profiles parallel-tests,extract-flaky-tests,skipFrontendBuild are always included.
+#       test-type:
+#         required: false
+#         type: string
+#         default: "database-integration-tests"
+#         description: The test type used in artifact names and job descriptions (e.g., "database-integration-tests", "history-integration-tests").
+#       test-type-label:
+#         required: false
+#         type: string
+#         default: "Database"
+#         description: Label for the test type used in artifact names and job descriptions (e.g., "Database", "History").
+#       notify-slack-on-failure:
+#         required: false
+#         type: boolean
+#         default: false
+#         description: Whether to send a Slack notification on failure or cancellation.
+#       runs-on:
+#         required: false
+#         type: string
+#         default: "gcp-perf-core-16-default"
+#       use-shared-distball:
+#         required: false
+#         type: boolean
+#         default: false
+#         description: >-
+#           When true, restore the io.camunda SNAPSHOTs from the run-scoped GCS
+#           artifact produced by a build-distball job (ci-build-distball-reusable.yml)
+#           elsewhere in the same run, instead of running a local build-zeebe reactor.
+#           Leave false if the calling run has no build-distball job, so the
+#           build-zeebe fallback runs. See #52693 and #56931.
+#       timeout-minutes:
+#         required: false
+#         type: number
+#         default: 20
+#         description: >-
+#           Job timeout. A non-blocking, schedule/dispatch-only caller may raise it if its own
+#           worst-case fork runtime needs more room than 20 minutes allows. Keep
+#           failsafe-timeout-seconds in step with it so a stuck fork still fails inside the job budget.
+#       failsafe-timeout-seconds:
+#         required: false
+#         type: number
+#         default: 0
+#         description: >-
+#           Overrides the pom's default -D failsafe.timeout (max seconds a single Maven fork
+#           may run before it's killed as hung), letting a wedged fork fail with a real report
+#           instead of the job's timeout-minutes cancelling it. Leave 0 to use the pom's
+#           default. Override only for callers whose worst-case fork runtime has been measured
+#           against a different timeout-minutes.
+#     outputs:
+#       flakyTests:
+#         description: "Flaky tests detected during database integration tests"
+#         value: ${{ jobs.integration-tests.outputs.flakyTests }}
 defaults:
   run:
     shell: bash

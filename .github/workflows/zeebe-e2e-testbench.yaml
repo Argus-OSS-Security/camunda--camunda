@@ -4,76 +4,77 @@
 # owner @camunda/core-features
 name: Run Zeebe E2E Tests
 
-on:
-  workflow_dispatch:
-    inputs:
-      maxTestDuration:
-        description: 'Test duration (Eg: PT2H, P3D)'
-        required: false
-        default: 'P5D'
-        type: string
-      generation:
-        description: 'Specifies the generation template which should be used by the testbench run'
-        required: false
-        default: 'Camunda SNAPSHOT'
-        type: string
-      branch:
-        description: 'Specifies the branch, for which the E2E run should be executed'
-        default: 'main'
-        required: false
-        type: string
-      clusterPlan:
-        description: 'Cluster plan used by testbench to create the test cluster'
-        default: 'G3-M'
-        required: false
-        type: string
-      fault:
-        ## The fault added to variables as follows
-        ## \"fault\": ${{ inputs.fault || 'null' }}
-        ## So the input should contain escape quotes.
-        description: 'Fault to inject in the test cluster. Eg:- \"restart-leader-1\". Specify the quotes with escape.'
-        default: null
-        required: false
-        type: string
-      maxInstanceDuration:
-        description: 'If an instance takes longer than the given duration to complete, test will fail.'
-        default: '15m'
-        required: false
-        type: string
-
-  workflow_call:
-    inputs:
-      maxTestDuration:
-        description: 'Test duration (Eg: PT2H, P3D)'
-        required: false
-        default: 'P5D'
-        type: string
-      generation:
-        description: 'Specifies the generation template which should be used by the testbench run'
-        required: false
-        default: 'Camunda SNAPSHOT'
-        type: string
-      branch:
-        description: 'Specifies the branch, for which the E2E run should be executed'
-        default: 'main'
-        required: false
-        type: string
-      clusterPlan:
-        description: 'Cluster plan used by testbench to create the test cluster'
-        default: 'Production - M'
-        required: false
-        type: string
-      fault:
-        description: 'Fault to inject in the test cluster. Eg:- \"restart-leader-1\". Specify the quotes with escape.'
-        default: null
-        required: false
-        type: string
-      maxInstanceDuration:
-        description: 'If an instance takes longer than the given duration to complete, test will fail.'
-        default: '15m'
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       maxTestDuration:
+#         description: 'Test duration (Eg: PT2H, P3D)'
+#         required: false
+#         default: 'P5D'
+#         type: string
+#       generation:
+#         description: 'Specifies the generation template which should be used by the testbench run'
+#         required: false
+#         default: 'Camunda SNAPSHOT'
+#         type: string
+#       branch:
+#         description: 'Specifies the branch, for which the E2E run should be executed'
+#         default: 'main'
+#         required: false
+#         type: string
+#       clusterPlan:
+#         description: 'Cluster plan used by testbench to create the test cluster'
+#         default: 'G3-M'
+#         required: false
+#         type: string
+#       fault:
+#         ## The fault added to variables as follows
+#         ## \"fault\": ${{ inputs.fault || 'null' }}
+#         ## So the input should contain escape quotes.
+#         description: 'Fault to inject in the test cluster. Eg:- \"restart-leader-1\". Specify the quotes with escape.'
+#         default: null
+#         required: false
+#         type: string
+#       maxInstanceDuration:
+#         description: 'If an instance takes longer than the given duration to complete, test will fail.'
+#         default: '15m'
+#         required: false
+#         type: string
+# 
+#   workflow_call:
+#     inputs:
+#       maxTestDuration:
+#         description: 'Test duration (Eg: PT2H, P3D)'
+#         required: false
+#         default: 'P5D'
+#         type: string
+#       generation:
+#         description: 'Specifies the generation template which should be used by the testbench run'
+#         required: false
+#         default: 'Camunda SNAPSHOT'
+#         type: string
+#       branch:
+#         description: 'Specifies the branch, for which the E2E run should be executed'
+#         default: 'main'
+#         required: false
+#         type: string
+#       clusterPlan:
+#         description: 'Cluster plan used by testbench to create the test cluster'
+#         default: 'Production - M'
+#         required: false
+#         type: string
+#       fault:
+#         description: 'Fault to inject in the test cluster. Eg:- \"restart-leader-1\". Specify the quotes with escape.'
+#         default: null
+#         required: false
+#         type: string
+#       maxInstanceDuration:
+#         description: 'If an instance takes longer than the given duration to complete, test will fail.'
+#         default: '15m'
+#         required: false
+#         type: string
+# 
 jobs:
   e2e:
     name: Run e2e testbench process

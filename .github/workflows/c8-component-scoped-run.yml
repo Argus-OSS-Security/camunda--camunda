@@ -33,34 +33,35 @@ name: C8 Component - Scoped Run
 # the dispatch, naming the value — but a renamed instance blocks generation
 # for that area until the list is updated here.
 
-on:
-  workflow_dispatch:
-    inputs:
-      spec:
-        description: "Test file, relative to the app (e.g. src/operate/pages/X.test.tsx)"
-        required: true
-        type: string
-      case_id:
-        description: "Coverage-plan case id carried in the test title (e.g. AL-UI-01)"
-        required: true
-        type: string
-      instance:
-        description: "vitest browser instance to scope to"
-        required: true
-        type: choice
-        options:
-          - admin
-          - operate:carbon
-          - operate:shadcn
-          - tasklist
-          - shared:carbon
-          - shared:shadcn
-      branch:
-        description: "Branch to test"
-        required: false
-        default: main
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       spec:
+#         description: "Test file, relative to the app (e.g. src/operate/pages/X.test.tsx)"
+#         required: true
+#         type: string
+#       case_id:
+#         description: "Coverage-plan case id carried in the test title (e.g. AL-UI-01)"
+#         required: true
+#         type: string
+#       instance:
+#         description: "vitest browser instance to scope to"
+#         required: true
+#         type: choice
+#         options:
+#           - admin
+#           - operate:carbon
+#           - operate:shadcn
+#           - tasklist
+#           - shared:carbon
+#           - shared:shadcn
+#       branch:
+#         description: "Branch to test"
+#         required: false
+#         default: main
+#         type: string
+# 
 permissions: {}
 
 defaults:

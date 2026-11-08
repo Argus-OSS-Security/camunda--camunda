@@ -4,21 +4,22 @@
 ---
 name: Publish Session Heartbeat to npm
 
-on:
-  workflow_dispatch:
-    inputs:
-      dry_run:
-        description: 'Run in dry-run mode (does not publish)'
-        required: false
-        type: boolean
-        default: true
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/workflows/publish-session-heartbeat.yml'
-      - 'webapp/client/packages/session-heartbeat/**'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       dry_run:
+#         description: 'Run in dry-run mode (does not publish)'
+#         required: false
+#         type: boolean
+#         default: true
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - '.github/workflows/publish-session-heartbeat.yml'
+#       - 'webapp/client/packages/session-heartbeat/**'
+# 
 env:
   TEST_OWNER: '@camunda/core-features'
   GHA_BEST_PRACTICES_LINTER: enabled

@@ -11,35 +11,36 @@ name: C8 Orchestration Cluster E2E Suite Tests
 # kept getting merged (camunda/team-test-automation#188). This reusable workflow
 # holds the test matrix once; ci.yml calls it as an automatic PR check scoped to
 # the author's changed tests, and the on-demand workflow calls it for a full run.
-on:
-  workflow_call:
-    inputs:
-      base:
-        description: "Base branch the run is sized for (main or stable/X.Y)."
-        required: true
-        type: string
-      test-ref:
-        description: "Git ref/SHA to check out for the test code."
-        required: true
-        type: string
-      changed-specs:
-        description: >-
-          Newline-separated spec paths (relative to the suite root) to gate on
-          when gating is "changed". Each job then fails ONLY if one of these
-          specs failed; untouched failures are reported but do not block.
-        required: false
-        type: string
-        default: ""
-      gating:
-        description: >-
-          "full" gates on the whole suite (Playwright's exit code decides, the
-          on-demand behaviour). "changed" blocks only on the PR's own
-          added/modified specs listed in changed-specs; an empty list blocks on
-          nothing.
-        required: false
-        type: string
-        default: "full"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       base:
+#         description: "Base branch the run is sized for (main or stable/X.Y)."
+#         required: true
+#         type: string
+#       test-ref:
+#         description: "Git ref/SHA to check out for the test code."
+#         required: true
+#         type: string
+#       changed-specs:
+#         description: >-
+#           Newline-separated spec paths (relative to the suite root) to gate on
+#           when gating is "changed". Each job then fails ONLY if one of these
+#           specs failed; untouched failures are reported but do not block.
+#         required: false
+#         type: string
+#         default: ""
+#       gating:
+#         description: >-
+#           "full" gates on the whole suite (Playwright's exit code decides, the
+#           on-demand behaviour). "changed" blocks only on the PR's own
+#           added/modified specs listed in changed-specs; an empty list blocks on
+#           nothing.
+#         required: false
+#         type: string
+#         default: "full"
+# 
 permissions: {}
 
 defaults:

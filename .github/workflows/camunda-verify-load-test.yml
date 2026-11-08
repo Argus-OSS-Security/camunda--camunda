@@ -6,14 +6,15 @@
 name: Verify load test
 run-name: "Verify load test: ${{ inputs.namespace }}"
 
-on:
-  workflow_call:
-    inputs:
-      namespace:
-        description: 'Kubernetes namespace where the load test is deployed'
-        type: string
-        required: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       namespace:
+#         description: 'Kubernetes namespace where the load test is deployed'
+#         type: string
+#         required: true
+# 
 env:
   TEST_OWNER: '@camunda/reliability-testing'
   CLUSTER: camunda-benchmark-prod

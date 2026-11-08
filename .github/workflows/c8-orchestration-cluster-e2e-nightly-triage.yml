@@ -10,49 +10,50 @@
 ---
 name: C8 Orchestration Cluster Nightly Triage
 
-on:
-  schedule:
-    - cron: '30 3 * * 1-5' # 03:30 UTC Mon-Fri -- 30min earlier than the previous 04:00.
-                           # Measured over 5 nights (2026-08-08..08-12): every nightly
-                           # workflow's schedule-triggered run finishes by ~03:13 UTC at
-                           # the latest (main-e2e is consistently the last to finish,
-                           # thanks to GitHub Actions' own cron-delivery delay on top of
-                           # its already-staggered kickoff); 03:30 keeps >15min margin
-                           # over that worst case while still starting earlier. Revisit
-                           # if a nightly job's finish time drifts close to this trigger.
-                           # Still runs before close-stale-fix-prs.yml at 05:00 UTC.
-    - cron: '45 7 * * 1-5' # 07:45 UTC Mon-Fri -- the suite-health job only. GitHub starts a
-                           # nightly up to ~2h45 after its cron (8.10 E2E, cron 02:15, has
-                           # started as late as 04:57), so only after ~07:00 is a nightly that
-                           # did not run today more than 26 hours past its previous run.
-  workflow_dispatch:
-    inputs:
-      dispatch:
-        description: 'Dispatch fix agents for grouped failures'
-        type: boolean
-        default: true
-        required: false
-      daily_cap:
-        description: 'Max fix-agent dispatches this run (default: 5 -- one per supported version)'
-        default: '5'
-        required: false
-      send_slack_notification:
-        description: 'Post triage summary and fix-agent replies to Slack (always true for scheduled runs)'
-        type: boolean
-        default: false
-        required: false
-      slack_channel:
-        description: 'Slack channel to post to (default: c8-orchestration-cluster-e2e-test-results; override for testing)'
-        required: false
-        default: ''
-      danger_force_redispatch:
-        description: '⚠️ DANGER: bypass the same-day cooldown and re-dispatch all eligible versions even if already dispatched today. For testing only. Default: false.'
-        type: boolean
-        default: false
-        required: false
-
-# Minimal at workflow level. Triage job only needs to read; dispatch job
-# bumps actions: write to trigger the fix workflow (zizmor: excessive-permissions).
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '30 3 * * 1-5' # 03:30 UTC Mon-Fri -- 30min earlier than the previous 04:00.
+#                            # Measured over 5 nights (2026-08-08..08-12): every nightly
+#                            # workflow's schedule-triggered run finishes by ~03:13 UTC at
+#                            # the latest (main-e2e is consistently the last to finish,
+#                            # thanks to GitHub Actions' own cron-delivery delay on top of
+#                            # its already-staggered kickoff); 03:30 keeps >15min margin
+#                            # over that worst case while still starting earlier. Revisit
+#                            # if a nightly job's finish time drifts close to this trigger.
+#                            # Still runs before close-stale-fix-prs.yml at 05:00 UTC.
+#     - cron: '45 7 * * 1-5' # 07:45 UTC Mon-Fri -- the suite-health job only. GitHub starts a
+#                            # nightly up to ~2h45 after its cron (8.10 E2E, cron 02:15, has
+#                            # started as late as 04:57), so only after ~07:00 is a nightly that
+#                            # did not run today more than 26 hours past its previous run.
+#   workflow_dispatch:
+#     inputs:
+#       dispatch:
+#         description: 'Dispatch fix agents for grouped failures'
+#         type: boolean
+#         default: true
+#         required: false
+#       daily_cap:
+#         description: 'Max fix-agent dispatches this run (default: 5 -- one per supported version)'
+#         default: '5'
+#         required: false
+#       send_slack_notification:
+#         description: 'Post triage summary and fix-agent replies to Slack (always true for scheduled runs)'
+#         type: boolean
+#         default: false
+#         required: false
+#       slack_channel:
+#         description: 'Slack channel to post to (default: c8-orchestration-cluster-e2e-test-results; override for testing)'
+#         required: false
+#         default: ''
+#       danger_force_redispatch:
+#         description: '⚠️ DANGER: bypass the same-day cooldown and re-dispatch all eligible versions even if already dispatched today. For testing only. Default: false.'
+#         type: boolean
+#         default: false
+#         required: false
+# 
+# # Minimal at workflow level. Triage job only needs to read; dispatch job
+# # bumps actions: write to trigger the fix workflow (zizmor: excessive-permissions).
 permissions:
   contents: read
   actions: read

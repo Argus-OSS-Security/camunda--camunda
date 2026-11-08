@@ -6,19 +6,20 @@
 ---
 name: C8 Orchestration Cluster - Reusable E2E Tests
 
-on:
-  workflow_call:
-    inputs:
-      branch:
-        description: "Branch to test (e.g. stable/8.8, main)"
-        required: true
-        type: string
-      tasklist_mode:
-        description: "Tasklist UI mode for stable 8.7-8.9 compatibility testing: v1 or v2"
-        required: false
-        default: ""
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       branch:
+#         description: "Branch to test (e.g. stable/8.8, main)"
+#         required: true
+#         type: string
+#       tasklist_mode:
+#         description: "Tasklist UI mode for stable 8.7-8.9 compatibility testing: v1 or v2"
+#         required: false
+#         default: ""
+#         type: string
+# 
 permissions:
   contents: read
 

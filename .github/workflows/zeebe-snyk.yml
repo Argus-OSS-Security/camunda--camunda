@@ -3,74 +3,75 @@
 # owner @camunda/core-features
 name: Zeebe Snyk
 
-on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: The project version; defaults to the version as defined by the root POM
-        required: false
-        type: string
-      target:
-        description: Allows overriding the project target reference directly; defaults to the current branch
-        required: false
-        type: string
-      dockerImage:
-        description: The full name of the Docker image; if absent and build is true, will use the built image name; if not building, infers from the version
-        required: false
-        type: string
-      monitor:
-        description: Upload Snyk snapshot instead of test
-        required: false
-        type: boolean
-        default: false
-      build:
-        description: Enable to also build Zeebe
-        required: false
-        type: boolean
-        default: true
-      useMinorVersion:
-        description: Uses the major and minor version only for target and version
-        required: false
-        type: boolean
-        default: false
-      ref:
-        description: The reference to checkout
-        required: false
-        type: string
-  workflow_call:
-    inputs:
-      version:
-        description: The project version; defaults to the version as defined by the root POM
-        required: false
-        type: string
-      target:
-        description: Allows overriding the project target reference directly; defaults to the current branch
-        required: false
-        type: string
-      dockerImage:
-        description: The full name of the Docker image; if absent and build is true, will use the built image name; if not building, infers from the version
-        required: false
-        type: string
-      monitor:
-        description: Upload Snyk snapshot instead of test
-        required: false
-        type: boolean
-        default: false
-      build:
-        description: Enable to also build Zeebe
-        required: false
-        type: boolean
-        default: true
-      useMinorVersion:
-        description: Uses the major and minor version only for target and version
-        required: false
-        type: boolean
-        default: false
-      ref:
-        description: The reference to checkout
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       version:
+#         description: The project version; defaults to the version as defined by the root POM
+#         required: false
+#         type: string
+#       target:
+#         description: Allows overriding the project target reference directly; defaults to the current branch
+#         required: false
+#         type: string
+#       dockerImage:
+#         description: The full name of the Docker image; if absent and build is true, will use the built image name; if not building, infers from the version
+#         required: false
+#         type: string
+#       monitor:
+#         description: Upload Snyk snapshot instead of test
+#         required: false
+#         type: boolean
+#         default: false
+#       build:
+#         description: Enable to also build Zeebe
+#         required: false
+#         type: boolean
+#         default: true
+#       useMinorVersion:
+#         description: Uses the major and minor version only for target and version
+#         required: false
+#         type: boolean
+#         default: false
+#       ref:
+#         description: The reference to checkout
+#         required: false
+#         type: string
+#   workflow_call:
+#     inputs:
+#       version:
+#         description: The project version; defaults to the version as defined by the root POM
+#         required: false
+#         type: string
+#       target:
+#         description: Allows overriding the project target reference directly; defaults to the current branch
+#         required: false
+#         type: string
+#       dockerImage:
+#         description: The full name of the Docker image; if absent and build is true, will use the built image name; if not building, infers from the version
+#         required: false
+#         type: string
+#       monitor:
+#         description: Upload Snyk snapshot instead of test
+#         required: false
+#         type: boolean
+#         default: false
+#       build:
+#         description: Enable to also build Zeebe
+#         required: false
+#         type: boolean
+#         default: true
+#       useMinorVersion:
+#         description: Uses the major and minor version only for target and version
+#         required: false
+#         type: boolean
+#         default: false
+#       ref:
+#         description: The reference to checkout
+#         required: false
+#         type: string
+# 
 defaults:
   run:
     # use bash shell by default to ensure pipefail behavior is the default

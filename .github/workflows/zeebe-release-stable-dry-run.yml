@@ -4,12 +4,13 @@
 # NOTE: This workflow is not just for Zeebe, but also for 8.6+ monorepo release!
 name: Zeebe Release Dry Run from stable branches
 
-on:
-  workflow_dispatch: {}
-  schedule:
-    # Runs at 02:00 every week day; see this link for more: https://crontab.guru/#0_2_*_*_1-5
-    - cron: '0 2 * * 1-5'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch: {}
+#   schedule:
+#     # Runs at 02:00 every week day; see this link for more: https://crontab.guru/#0_2_*_*_1-5
+#     - cron: '0 2 * * 1-5'
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
 

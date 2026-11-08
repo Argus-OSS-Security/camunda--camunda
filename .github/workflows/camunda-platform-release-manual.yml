@@ -3,33 +3,34 @@
 ---
 name: Camunda Platform Release
 
-on:
-  workflow_dispatch:
-    inputs:
-      releaseVersion:
-        description: 'releaseVersion:'
-        type: string
-        required: true
-      nextDevelopmentVersion:
-        description: 'nextDevelopmentVersion: e.g. 8.X.X-SNAPSHOT'
-        type: string
-        required: true
-      isLatest:
-        description: 'isLatest: updates the `latest` docker tag'
-        type: boolean
-        required: false
-        default: false
-      releaseBranch:
-        description: 'releaseBranch: defaults to `release-$releaseVersion` if not set'
-        type: string
-        required: false
-        default: ''
-      dryRun:
-        description: 'dryRun: Whether to perform a dry release where no changes/artifacts are pushed'
-        type: boolean
-        required: true
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       releaseVersion:
+#         description: 'releaseVersion:'
+#         type: string
+#         required: true
+#       nextDevelopmentVersion:
+#         description: 'nextDevelopmentVersion: e.g. 8.X.X-SNAPSHOT'
+#         type: string
+#         required: true
+#       isLatest:
+#         description: 'isLatest: updates the `latest` docker tag'
+#         type: boolean
+#         required: false
+#         default: false
+#       releaseBranch:
+#         description: 'releaseBranch: defaults to `release-$releaseVersion` if not set'
+#         type: string
+#         required: false
+#         default: ''
+#       dryRun:
+#         description: 'dryRun: Whether to perform a dry release where no changes/artifacts are pushed'
+#         type: boolean
+#         required: true
+#         default: false
+# 
 concurrency:
   # cannot use the inputs context here as on this level only the github context is accessible, see
   # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#concurrency

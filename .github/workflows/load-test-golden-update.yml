@@ -7,18 +7,19 @@
 ---
 name: Load Test Setup - Golden File Update
 
-on:
-  push:
-    branches:
-      - "renovate/**"
-    paths:
-      - "load-tests/setup/**"
-  pull_request:
-    types: [labeled, synchronize]
-    paths:
-      - "load-tests/setup/**"
-
-# Limit workflow to 1 concurrent run per PR: new commit -> old runs are canceled to save costs.
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - "renovate/**"
+#     paths:
+#       - "load-tests/setup/**"
+#   pull_request:
+#     types: [labeled, synchronize]
+#     paths:
+#       - "load-tests/setup/**"
+# 
+# # Limit workflow to 1 concurrent run per PR: new commit -> old runs are canceled to save costs.
 concurrency:
   cancel-in-progress: true
   group: ${{ format('{0}-{1}', github.workflow, github.ref) }}

@@ -17,22 +17,23 @@
 
 name: Optimize CI Reusable
 
-on:
-  workflow_call:
-    inputs:
-      branch:
-        description: "The branch name to be used for the workflow"
-        required: true
-        type: string
-      pushDocker:
-        description: "Whether the built docker images are pushed to camunda registry"
-        type: boolean
-        default: false
-      version:
-        description: "Custom Docker image tag (defaults to pr-<commit-hash>)"
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       branch:
+#         description: "The branch name to be used for the workflow"
+#         required: true
+#         type: string
+#       pushDocker:
+#         description: "Whether the built docker images are pushed to camunda registry"
+#         type: boolean
+#         default: false
+#       version:
+#         description: "Custom Docker image tag (defaults to pr-<commit-hash>)"
+#         required: false
+#         type: string
+# 
 defaults:
   run:
     # use bash shell by default to ensure pipefail behavior is the default

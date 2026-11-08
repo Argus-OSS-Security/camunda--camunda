@@ -3,11 +3,12 @@
 # owner: @camunda/core-features
 name: Camunda Compatibility Tests - Trigger
 
-on:
-  schedule:
-    # Run daily at 02:00 UTC
-    - cron: "0 2 * * *"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Run daily at 02:00 UTC
+#     - cron: "0 2 * * *"
+# 
 env:
   TEST_OWNER: '@camunda/core-features'
 

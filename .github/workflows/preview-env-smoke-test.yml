@@ -3,74 +3,75 @@
 ---
 name: Preview Environment Smoke Test
 
-on:
-  schedule:
-  # Run weekly on Monday at 06:00 UTC
-  - cron: '0 6 * * 1'
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version(s) to test'
-        required: false
-        type: choice
-        options:
-        - all
-        - '8.11'
-        - '8.10'
-        - '8.9'
-        - '8.8'
-        default: all
-      skip-teardown:
-        description: |
-          Skip teardown (e.g. keep deployed preview env for debugging)
-        required: false
-        type: boolean
-        default: false
-      existing-host:
-        description: |
-          Iteration shortcut (8.11 only): reuse an already-deployed preview env
-          (host FQDN, e.g. smoke811-123.camunda.camunda.cloud) instead of
-          building images and deploying. Chart changes reach the existing env
-          via ArgoCD branch tracking, so a push + this input skips ~20min of
-          build/deploy per iteration.
-        required: false
-        type: string
-        default: ''
-      fast-feedback:
-        description: |
-          Iteration shortcut: run Playwright with --retries=0 so a red result
-          arrives in minutes instead of retry-multiplied timeouts.
-        required: false
-        type: boolean
-        default: false
-      ref-8-8:
-        description: |
-          Git ref to build and deploy the 8.8 preview from. Lets stable-branch
-          chart changes be smoke-tested pre-merge from their PR branch. The
-          reusable deploy workflow itself still runs from stable/8.8 (static
-          `uses:` ref).
-        required: false
-        type: string
-        default: 'stable/8.8'
-      ref-8-9:
-        description: |
-          Git ref to build and deploy the 8.9 preview from. Lets stable-branch
-          chart changes be smoke-tested pre-merge from their PR branch. The
-          reusable deploy workflow itself still runs from stable/8.9 (static
-          `uses:` ref).
-        required: false
-        type: string
-        default: 'stable/8.9'
-      ref-8-10:
-        description: |
-          Git ref to build and deploy the 8.10 preview from. Lets stable-branch
-          chart changes be smoke-tested pre-merge from their PR branch. The
-          reusable deploy workflow itself still runs from stable/8.10 (static
-          `uses:` ref).
-        required: false
-        type: string
-        default: 'stable/8.10'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#   # Run weekly on Monday at 06:00 UTC
+#   - cron: '0 6 * * 1'
+#   workflow_dispatch:
+#     inputs:
+#       version:
+#         description: 'Version(s) to test'
+#         required: false
+#         type: choice
+#         options:
+#         - all
+#         - '8.11'
+#         - '8.10'
+#         - '8.9'
+#         - '8.8'
+#         default: all
+#       skip-teardown:
+#         description: |
+#           Skip teardown (e.g. keep deployed preview env for debugging)
+#         required: false
+#         type: boolean
+#         default: false
+#       existing-host:
+#         description: |
+#           Iteration shortcut (8.11 only): reuse an already-deployed preview env
+#           (host FQDN, e.g. smoke811-123.camunda.camunda.cloud) instead of
+#           building images and deploying. Chart changes reach the existing env
+#           via ArgoCD branch tracking, so a push + this input skips ~20min of
+#           build/deploy per iteration.
+#         required: false
+#         type: string
+#         default: ''
+#       fast-feedback:
+#         description: |
+#           Iteration shortcut: run Playwright with --retries=0 so a red result
+#           arrives in minutes instead of retry-multiplied timeouts.
+#         required: false
+#         type: boolean
+#         default: false
+#       ref-8-8:
+#         description: |
+#           Git ref to build and deploy the 8.8 preview from. Lets stable-branch
+#           chart changes be smoke-tested pre-merge from their PR branch. The
+#           reusable deploy workflow itself still runs from stable/8.8 (static
+#           `uses:` ref).
+#         required: false
+#         type: string
+#         default: 'stable/8.8'
+#       ref-8-9:
+#         description: |
+#           Git ref to build and deploy the 8.9 preview from. Lets stable-branch
+#           chart changes be smoke-tested pre-merge from their PR branch. The
+#           reusable deploy workflow itself still runs from stable/8.9 (static
+#           `uses:` ref).
+#         required: false
+#         type: string
+#         default: 'stable/8.9'
+#       ref-8-10:
+#         description: |
+#           Git ref to build and deploy the 8.10 preview from. Lets stable-branch
+#           chart changes be smoke-tested pre-merge from their PR branch. The
+#           reusable deploy workflow itself still runs from stable/8.10 (static
+#           `uses:` ref).
+#         required: false
+#         type: string
+#         default: 'stable/8.10'
+# 
 env:
   # Default owner for CI-analytics attribution: observe-build-status falls back
   # to TEST_OWNER when reporting a failing job. Every job here is eng-ops-owned

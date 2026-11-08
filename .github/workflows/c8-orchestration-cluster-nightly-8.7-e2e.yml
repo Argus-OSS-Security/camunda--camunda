@@ -5,11 +5,12 @@
 ---
 name: C8 Orchestration Cluster Nightly 8.7 - E2E Tests
 
-on:
-  schedule:
-    - cron: "15 0 * * *"
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "15 0 * * *"
+#   workflow_dispatch: {}
+# 
 permissions:
   contents: read
 

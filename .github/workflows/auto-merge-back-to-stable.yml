@@ -6,12 +6,13 @@
 # owner: @camunda/engineering-operations
 name: Auto-merge release to stable
 
-on:
-  pull_request:
-    types: [opened]
-    branches:
-      - 'stable/**'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     types: [opened]
+#     branches:
+#       - 'stable/**'
+# 
 jobs:
   auto-merge:
     # Only run for PRs from release branches created by release automation

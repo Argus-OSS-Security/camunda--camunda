@@ -1,8 +1,9 @@
 # type: Project Management
 name: Optimize Opened Issues Automation
-on:
-  issues:
-    types: [opened]
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   issues:
+#     types: [opened]
 jobs:
   optimize-opened-issues-automation:
     name: Opened Issues Automation

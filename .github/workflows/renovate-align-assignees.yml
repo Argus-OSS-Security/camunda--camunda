@@ -6,25 +6,26 @@
 ---
 name: Renovate Align Assignees
 
-on:
-  schedule:
-    - cron: '*/30 * * * *'
-  workflow_dispatch:
-    inputs:
-      dry_run:
-        description: 'Log the intended assignee changes without applying them'
-        type: boolean
-        default: false
-  # Self-test: a change to the reconciler runs it against live PRs in dry-run,
-  # with a read-only token (see the validate job), exercising the full workflow
-  # wiring on the PR branch — which schedule/workflow_dispatch cannot do before
-  # the workflow is on the default branch.
-  pull_request:
-    paths:
-      - '.github/workflows/renovate-align-assignees.yml'
-      - '.github/scripts/align-renovate-assignees.mjs'
-      - '.github/scripts/align-renovate-assignees.test.mjs'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '*/30 * * * *'
+#   workflow_dispatch:
+#     inputs:
+#       dry_run:
+#         description: 'Log the intended assignee changes without applying them'
+#         type: boolean
+#         default: false
+#   # Self-test: a change to the reconciler runs it against live PRs in dry-run,
+#   # with a read-only token (see the validate job), exercising the full workflow
+#   # wiring on the PR branch — which schedule/workflow_dispatch cannot do before
+#   # the workflow is on the default branch.
+#   pull_request:
+#     paths:
+#       - '.github/workflows/renovate-align-assignees.yml'
+#       - '.github/scripts/align-renovate-assignees.mjs'
+#       - '.github/scripts/align-renovate-assignees.test.mjs'
+# 
 defaults:
   run:
     shell: bash

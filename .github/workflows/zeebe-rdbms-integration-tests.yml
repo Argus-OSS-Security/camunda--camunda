@@ -4,23 +4,24 @@
 # owner: @camunda/core-features, @camunda/data-layer
 name: Rdbms Manual/Scheduled Run Integration Tests
 
-on:
-  workflow_dispatch:
-    inputs:
-      notify-slack-on-failure:
-        description: "Whether workflow_dispatch runs should send Slack notifications on failure/cancellation"
-        required: false
-        type: boolean
-        default: false
-  workflow_call:
-  pull_request:
-    paths:
-      - ".ci/db-versions.yml"
-      - ".github/actions/read-db-versions/**"
-      - ".github/workflows/zeebe-rdbms-integration-tests.yml"
-  schedule:
-    - cron: "0 5 * * Mon-Fri"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       notify-slack-on-failure:
+#         description: "Whether workflow_dispatch runs should send Slack notifications on failure/cancellation"
+#         required: false
+#         type: boolean
+#         default: false
+#   workflow_call:
+#   pull_request:
+#     paths:
+#       - ".ci/db-versions.yml"
+#       - ".github/actions/read-db-versions/**"
+#       - ".github/workflows/zeebe-rdbms-integration-tests.yml"
+#   schedule:
+#     - cron: "0 5 * * Mon-Fri"
+# 
 env:
   TEST_OWNER: '@camunda/core-features'
   GHA_BEST_PRACTICES_LINTER: enabled

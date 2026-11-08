@@ -6,14 +6,15 @@
 ---
 name: C8 Orchestration Cluster Nightly Metrics Report
 
-on:
-  schedule:
-    - cron: "30 3 * * *" # 03:30 UTC — moved earlier in step with the triage workflow's
-                         # cron; see c8-orchestration-cluster-e2e-nightly-triage.yml for
-                         # the measured-timing rationale. Still after all nightly tests
-                         # complete (~03:13 UTC worst case observed).
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "30 3 * * *" # 03:30 UTC — moved earlier in step with the triage workflow's
+#                          # cron; see c8-orchestration-cluster-e2e-nightly-triage.yml for
+#                          # the measured-timing rationale. Still after all nightly tests
+#                          # complete (~03:13 UTC worst case observed).
+#   workflow_dispatch: {}
+# 
 defaults:
   run:
     shell: bash

@@ -7,52 +7,53 @@ name: "C8Run: Release Candidate"
 # is released exactly once, so it is a unique key without a separate correlation id.
 run-name: c8run-rc-${{ inputs.camundaVersion }}
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: "Release branch to build from (e.g., main, stable/8.7, stable/8.8)"
-        type: string
-        required: true
-        default: ""
-      camundaVersion:
-        description: "Full Camunda release version = the C8Run version (e.g., 8.8.29, 8.8.0-alpha4.1). The minor (e.g. 8.8) is derived from it."
-        type: string
-        required: true
-        default: ""
-      connectorsVersion:
-        description: "Full Connectors bundle version (e.g., 8.8.15)"
-        type: string
-        required: true
-        default: ""
-      # The following are only consumed by the Docker-Compose self-heal on docker-reliant branches
-      # (8.7/8.8). They let the preflight author a correct docker-compose .env when it is stale.
-      # The release train supplies them; ad-hoc runs may omit them (then a stale compose hard-fails).
-      optimizeVersion:
-        description: "Optimize version for the compose self-heal (docker-reliant branches only)."
-        type: string
-        required: false
-        default: ""
-      identityVersion:
-        description: "Standalone (management) Identity version for the compose self-heal (docker-reliant branches only)."
-        type: string
-        required: false
-        default: ""
-      webModelerVersion:
-        description: "Web Modeler version for the compose self-heal (docker-reliant branches only)."
-        type: string
-        required: false
-        default: ""
-      consoleVersion:
-        description: "Console version for the compose self-heal (8.8+ docker-reliant branches; 8.7 has no console)."
-        type: string
-        required: false
-        default: ""
-      dryRun:
-        description: "Dry run: build for real but stage to an isolated <version>-rc-dryrun Harbor tag and skip the .env bump PR. Nothing public is written; the dryrun tag is deletable residue."
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: "Release branch to build from (e.g., main, stable/8.7, stable/8.8)"
+#         type: string
+#         required: true
+#         default: ""
+#       camundaVersion:
+#         description: "Full Camunda release version = the C8Run version (e.g., 8.8.29, 8.8.0-alpha4.1). The minor (e.g. 8.8) is derived from it."
+#         type: string
+#         required: true
+#         default: ""
+#       connectorsVersion:
+#         description: "Full Connectors bundle version (e.g., 8.8.15)"
+#         type: string
+#         required: true
+#         default: ""
+#       # The following are only consumed by the Docker-Compose self-heal on docker-reliant branches
+#       # (8.7/8.8). They let the preflight author a correct docker-compose .env when it is stale.
+#       # The release train supplies them; ad-hoc runs may omit them (then a stale compose hard-fails).
+#       optimizeVersion:
+#         description: "Optimize version for the compose self-heal (docker-reliant branches only)."
+#         type: string
+#         required: false
+#         default: ""
+#       identityVersion:
+#         description: "Standalone (management) Identity version for the compose self-heal (docker-reliant branches only)."
+#         type: string
+#         required: false
+#         default: ""
+#       webModelerVersion:
+#         description: "Web Modeler version for the compose self-heal (docker-reliant branches only)."
+#         type: string
+#         required: false
+#         default: ""
+#       consoleVersion:
+#         description: "Console version for the compose self-heal (8.8+ docker-reliant branches; 8.7 has no console)."
+#         type: string
+#         required: false
+#         default: ""
+#       dryRun:
+#         description: "Dry run: build for real but stage to an isolated <version>-rc-dryrun Harbor tag and skip the .env bump PR. Nothing public is written; the dryrun tag is deletable residue."
+#         type: boolean
+#         default: false
+# 
 permissions:
   contents: read
 

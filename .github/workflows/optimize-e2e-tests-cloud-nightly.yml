@@ -14,21 +14,22 @@
 # without that the test would be unverifiable until after merge.
 name: Optimize E2E Cloud (Nightly)
 
-on:
-  schedule:
-    - cron: "0 3 * * *"
-  workflow_dispatch:
-  pull_request:
-    paths:
-      - ".github/workflows/optimize-e2e-tests-cloud-nightly.yml"
-      - "optimize/client/e2e/**"
-      - "optimize/client/playwright.config.ts"
-      - "optimize/client/scripts/start-backend.js"
-
-# One bucket for the whole workflow: every run authenticates the same user against the same Auth0
-# tenant, and concurrent logins are what trip its per-IP throttling. In-flight runs are left to
-# finish rather than cancelled - each one is a real login, and discarding it midway loses the signal
-# it was started for.
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "0 3 * * *"
+#   workflow_dispatch:
+#   pull_request:
+#     paths:
+#       - ".github/workflows/optimize-e2e-tests-cloud-nightly.yml"
+#       - "optimize/client/e2e/**"
+#       - "optimize/client/playwright.config.ts"
+#       - "optimize/client/scripts/start-backend.js"
+# 
+# # One bucket for the whole workflow: every run authenticates the same user against the same Auth0
+# # tenant, and concurrent logins are what trip its per-IP throttling. In-flight runs are left to
+# # finish rather than cancelled - each one is a real login, and discarding it midway loses the signal
+# # it was started for.
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false

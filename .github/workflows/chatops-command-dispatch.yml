@@ -3,10 +3,11 @@
 ---
 name: ChatOps Command Dispatch
 
-on:
-  issue_comment:
-    types: [created]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   issue_comment:
+#     types: [created]
+# 
 jobs:
   dispatch-pr-command:
     if: ${{ github.event.issue.pull_request }}

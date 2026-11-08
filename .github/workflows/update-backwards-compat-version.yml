@@ -2,22 +2,23 @@
 # owner: @camunda/engineering-operations
 name: Update Backwards Compat Version
 
-on:
-  workflow_dispatch:
-    inputs:
-      releaseVersion:
-        description: 'The minor version that was just released (e.g. 8.10.0). main''s backwards.compat.version will be updated to this value.'
-        type: string
-        required: true
-      userSlackId:
-        description: 'The Slack ID of the user to notify on failure, no mention if omitted.'
-        type: string
-        required: false
-      dryRun:
-        description: 'Whether to perform a dry run where no changes are pushed and no PR is opened, defaults to true.'
-        type: boolean
-        default: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       releaseVersion:
+#         description: 'The minor version that was just released (e.g. 8.10.0). main''s backwards.compat.version will be updated to this value.'
+#         type: string
+#         required: true
+#       userSlackId:
+#         description: 'The Slack ID of the user to notify on failure, no mention if omitted.'
+#         type: string
+#         required: false
+#       dryRun:
+#         description: 'Whether to perform a dry run where no changes are pushed and no PR is opened, defaults to true.'
+#         type: boolean
+#         default: true
+# 
 env:
   GHA_BEST_PRACTICES_LINTER: enabled
 

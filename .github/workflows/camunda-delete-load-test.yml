@@ -10,20 +10,21 @@
 name: Delete load test
 run-name: "Delete load test: ${{ inputs.namespace }}"
 
-on:
-  workflow_call:
-    inputs:
-      namespace:
-        description: 'Exact Kubernetes namespace to delete (caller must already have resolved the name)'
-        type: string
-        required: true
-  workflow_dispatch:
-    inputs:
-      namespace:
-        description: 'Exact Kubernetes namespace to delete. Must start with c8- and have label camunda.io/purpose=load-test.'
-        type: string
-        required: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       namespace:
+#         description: 'Exact Kubernetes namespace to delete (caller must already have resolved the name)'
+#         type: string
+#         required: true
+#   workflow_dispatch:
+#     inputs:
+#       namespace:
+#         description: 'Exact Kubernetes namespace to delete. Must start with c8- and have label camunda.io/purpose=load-test.'
+#         type: string
+#         required: true
+# 
 defaults:
   run:
     shell: bash

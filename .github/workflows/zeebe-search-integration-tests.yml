@@ -4,16 +4,17 @@
 # owner: @camunda/core-features, @camunda/data-layer
 name: Search DB Manual/Scheduled Run Integration Tests
 
-on:
-  workflow_dispatch:
-  pull_request:
-    paths:
-      - ".ci/db-versions.yml"
-      - ".github/actions/read-db-versions/**"
-      - ".github/workflows/zeebe-search-integration-tests.yml"
-  schedule:
-    - cron: "0 5 * * Mon-Fri"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#   pull_request:
+#     paths:
+#       - ".ci/db-versions.yml"
+#       - ".github/actions/read-db-versions/**"
+#       - ".github/workflows/zeebe-search-integration-tests.yml"
+#   schedule:
+#     - cron: "0 5 * * Mon-Fri"
+# 
 env:
   GHA_BEST_PRACTICES_LINTER: enabled
 

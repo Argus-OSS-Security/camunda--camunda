@@ -6,11 +6,12 @@
 ---
 name: C8 Orchestration Cluster Nightly 8.9 - API Tests (RDBMS)
 
-on:
-  schedule:
-    - cron: "0 1 * * *"
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "0 1 * * *"
+#   workflow_dispatch: {}
+# 
 permissions:
   contents: read
 

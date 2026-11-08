@@ -2,32 +2,33 @@
 # DEPRECATED: This workflow is deprecated and should be removed when 8.7 reaches EOL in favor of Monorepo Release Process camunda/40184.
 name: Optimize Release Camunda Optimize C8
 
-on:
-  workflow_dispatch:
-    inputs:
-      RELEASE_VERSION:
-        required: true
-        description: "Version to release. Applied to pom.xml and Git tag"
-        default: "0.0.0"
-      DEVELOPMENT_VERSION:
-        required: true
-        description: "Next development version"
-        default: "0.1.0-SNAPSHOT"
-      BRANCH:
-        required: true
-        description: "The branch used for the release checkout"
-        default: "release/0.0.0"
-      DOCKER_LATEST:
-        required: true
-        description: "Should the docker image be tagged as latest?"
-        type: boolean
-        default: true
-      IS_DRY_RUN:
-        required: true
-        description: "Is this a dry run?"
-        type: boolean
-        default: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       RELEASE_VERSION:
+#         required: true
+#         description: "Version to release. Applied to pom.xml and Git tag"
+#         default: "0.0.0"
+#       DEVELOPMENT_VERSION:
+#         required: true
+#         description: "Next development version"
+#         default: "0.1.0-SNAPSHOT"
+#       BRANCH:
+#         required: true
+#         description: "The branch used for the release checkout"
+#         default: "release/0.0.0"
+#       DOCKER_LATEST:
+#         required: true
+#         description: "Should the docker image be tagged as latest?"
+#         type: boolean
+#         default: true
+#       IS_DRY_RUN:
+#         required: true
+#         description: "Is this a dry run?"
+#         type: boolean
+#         default: true
+# 
 defaults:
   run:
     shell: bash

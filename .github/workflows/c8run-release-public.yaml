@@ -7,19 +7,20 @@ run-name: c8run-public-${{ inputs.camundaVersion }}
 # Promotes a previously staged RC (build-once → promote): pulls the exact notarized bytes from Harbor
 # and publishes them to the consumer-facing targets. No rebuild, no signing, no packager.
 
-on:
-  workflow_dispatch:
-    inputs:
-      camundaVersion:
-        description: "Full Camunda release version to promote (e.g., 8.8.29, 8.8.0-alpha4.1). Pulls c8run:<camundaVersion>-rc from Harbor. The minor (e.g. 8.8) is derived from it."
-        type: string
-        required: true
-        default: ""
-      dryRun:
-        description: "Dry run: pull the isolated <version>-rc-dryrun tag, verify byte-identity, and LOG (not execute) the GitHub release + Download Center publishes. Nothing public is written."
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       camundaVersion:
+#         description: "Full Camunda release version to promote (e.g., 8.8.29, 8.8.0-alpha4.1). Pulls c8run:<camundaVersion>-rc from Harbor. The minor (e.g. 8.8) is derived from it."
+#         type: string
+#         required: true
+#         default: ""
+#       dryRun:
+#         description: "Dry run: pull the isolated <version>-rc-dryrun tag, verify byte-identity, and LOG (not execute) the GitHub release + Download Center publishes. Nothing public is written."
+#         type: boolean
+#         default: false
+# 
 permissions:
   contents: write
 

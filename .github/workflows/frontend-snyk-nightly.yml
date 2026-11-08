@@ -6,30 +6,31 @@
 name: Frontend Snyk Nightly
 run-name: Frontend Snyk (${{ inputs.branch }})
 
-on:
-  workflow_call:
-    inputs:
-      branch:
-        description: Branch to scan
-        required: true
-        type: string
-      notify-on-failure:
-        description: Notify Slack when a scan fails
-        required: true
-        type: boolean
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: Branch to scan
-        required: true
-        default: main
-        type: string
-      notify-on-failure:
-        description: Notify Slack when a scan fails
-        required: true
-        default: false
-        type: boolean
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       branch:
+#         description: Branch to scan
+#         required: true
+#         type: string
+#       notify-on-failure:
+#         description: Notify Slack when a scan fails
+#         required: true
+#         type: boolean
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: Branch to scan
+#         required: true
+#         default: main
+#         type: string
+#       notify-on-failure:
+#         description: Notify Slack when a scan fails
+#         required: true
+#         default: false
+#         type: boolean
+# 
 defaults:
   run:
     shell: bash

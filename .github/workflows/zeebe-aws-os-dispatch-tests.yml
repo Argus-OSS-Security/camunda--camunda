@@ -8,23 +8,24 @@
 # owner: @camunda/core-features, @camunda/data-layer
 name: AWS OpenSearch Manual/Scheduled Run Integration Tests
 
-on:
-  workflow_dispatch:
-    inputs:
-      ref:
-        description: Branch or commit to test against
-        type: string
-        default: "main"
-      opensearch-version:
-        description: Version of AWS OpenSearch
-        type: choice
-        options:
-          - "2.19"
-          - "3.7"
-          - "all"
-  schedule:
-    - cron: "0 4 * * Mon-Fri"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       ref:
+#         description: Branch or commit to test against
+#         type: string
+#         default: "main"
+#       opensearch-version:
+#         description: Version of AWS OpenSearch
+#         type: choice
+#         options:
+#           - "2.19"
+#           - "3.7"
+#           - "all"
+#   schedule:
+#     - cron: "0 4 * * Mon-Fri"
+# 
 jobs:
   # Each matrix leg below is a separate call to the reusable workflow, i.e. a fully
   # independent job graph (check version -> cleanup -> integration tests -> slack

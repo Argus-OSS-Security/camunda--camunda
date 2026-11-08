@@ -13,12 +13,13 @@ permissions:
 # which a manual run does not have. Running the gate by hand is already possible
 # from the gate's own workflow_dispatch in c8-cross-component-e2e-tests, which
 # takes source_repo and source_sha directly.
-on:
-  pull_request:
-    # `edited` matters: the epic link is usually pasted in after opening, and
-    # without it those PRs would never get a check.
-    types: [opened, edited, synchronize, reopened, ready_for_review]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     # `edited` matters: the epic link is usually pasted in after opening, and
+#     # without it those PRs would never get a check.
+#     types: [opened, edited, synchronize, reopened, ready_for_review]
+# 
 jobs:
   trigger-coverage-gate:
     name: Trigger coverage gate in c8-cross-component-e2e-tests

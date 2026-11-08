@@ -13,40 +13,41 @@
 name: Camunda Load Test Metrics
 run-name: "Camunda Load Test Metrics: ${{ inputs.namespace }}"
 
-on:
-  workflow_dispatch:
-    inputs:
-      namespace:
-        description: 'Namespace (e.g. c8-pgoyal-quicker-pr-1234 or c8-medic-daily-2026-05-08-abc1234-test)'
-        required: true
-        type: string
-      duration-seconds:
-        description: 'Duration of the load-test run window in seconds, also the PromQL range each query covers'
-        required: false
-        type: string
-        default: '600'
-      at:
-        description: 'Optional Prometheus `time` anchor (RFC3339, e.g. 2026-05-09T12:00:00Z, or Unix timestamp). Queries end at this instant instead of "now" — use to snapshot a run whose namespace TTL has already expired.'
-        required: false
-        type: string
-        default: ''
-  workflow_call:
-    inputs:
-      namespace:
-        description: 'Namespace passed to loadtestctl report'
-        required: true
-        type: string
-      duration-seconds:
-        description: 'Duration of the load-test run window in seconds, also the PromQL range each query covers.'
-        required: false
-        type: string
-        default: '600'
-      at:
-        description: 'Optional Prometheus `time` anchor (RFC3339 or Unix timestamp). When set, queries end at this instant instead of "now".'
-        required: false
-        type: string
-        default: ''
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       namespace:
+#         description: 'Namespace (e.g. c8-pgoyal-quicker-pr-1234 or c8-medic-daily-2026-05-08-abc1234-test)'
+#         required: true
+#         type: string
+#       duration-seconds:
+#         description: 'Duration of the load-test run window in seconds, also the PromQL range each query covers'
+#         required: false
+#         type: string
+#         default: '600'
+#       at:
+#         description: 'Optional Prometheus `time` anchor (RFC3339, e.g. 2026-05-09T12:00:00Z, or Unix timestamp). Queries end at this instant instead of "now" — use to snapshot a run whose namespace TTL has already expired.'
+#         required: false
+#         type: string
+#         default: ''
+#   workflow_call:
+#     inputs:
+#       namespace:
+#         description: 'Namespace passed to loadtestctl report'
+#         required: true
+#         type: string
+#       duration-seconds:
+#         description: 'Duration of the load-test run window in seconds, also the PromQL range each query covers.'
+#         required: false
+#         type: string
+#         default: '600'
+#       at:
+#         description: 'Optional Prometheus `time` anchor (RFC3339 or Unix timestamp). When set, queries end at this instant instead of "now".'
+#         required: false
+#         type: string
+#         default: ''
+# 
 defaults:
   run:
     shell: bash

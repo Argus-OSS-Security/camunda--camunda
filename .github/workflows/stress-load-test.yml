@@ -15,69 +15,70 @@
 name: Stress test
 run-name: "Stress test variant: ${{ inputs.name }}"
 
-on:
-  workflow_call:
-    inputs:
-      name:
-        description: 'Bare name for this stress test (e.g. medic-daily-2026-08-18-abc1234-test-grpc), without c8- prefix'
-        type: string
-        required: true
-      secondary-storage-type:
-        description: 'Secondary database backend for Camunda Platform, passed through to camunda-load-test.yml'
-        type: string
-        default: elasticsearch
-        required: false
-      load-test-load:
-        description: 'Helm args for workload components, passed through to camunda-load-test.yml (e.g. --set global.preferRest.enabled=true)'
-        type: string
-        default: ""
-        required: false
-      load-test-setup-helm-values:
-        description: 'Additional Helm values for the load-test-setup chart, passed through to camunda-load-test.yml'
-        type: string
-        default: ""
-        required: false
-      build-frontend:
-        description: 'Build frontend assets as part of the load test image build'
-        type: boolean
-        default: true
-        required: false
-    outputs:
-      soak-end-epoch:
-        description: 'Unix epoch seconds when this variant''s soak period ended. Non-matrix callers only.'
-        value: ${{ jobs.soak.outputs.soak_end_epoch }}
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Bare name for this stress test, without c8- prefix'
-        required: true
-      secondary-storage-type:
-        description: 'Secondary database backend for Camunda Platform'
-        type: choice
-        options:
-          - elasticsearch
-          - opensearch
-          - postgresql
-          - mysql
-          - mariadb
-          - mssql
-          - oracle
-          - none
-        default: elasticsearch
-      load-test-load:
-        description: 'Helm args for workload components (e.g. --set global.preferRest.enabled=true)'
-        default: ""
-        required: false
-      load-test-setup-helm-values:
-        description: 'Additional Helm values for the load-test-setup chart'
-        default: ""
-        required: false
-      build-frontend:
-        description: 'Build frontend assets as part of the load test image build'
-        type: boolean
-        default: true
-        required: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       name:
+#         description: 'Bare name for this stress test (e.g. medic-daily-2026-08-18-abc1234-test-grpc), without c8- prefix'
+#         type: string
+#         required: true
+#       secondary-storage-type:
+#         description: 'Secondary database backend for Camunda Platform, passed through to camunda-load-test.yml'
+#         type: string
+#         default: elasticsearch
+#         required: false
+#       load-test-load:
+#         description: 'Helm args for workload components, passed through to camunda-load-test.yml (e.g. --set global.preferRest.enabled=true)'
+#         type: string
+#         default: ""
+#         required: false
+#       load-test-setup-helm-values:
+#         description: 'Additional Helm values for the load-test-setup chart, passed through to camunda-load-test.yml'
+#         type: string
+#         default: ""
+#         required: false
+#       build-frontend:
+#         description: 'Build frontend assets as part of the load test image build'
+#         type: boolean
+#         default: true
+#         required: false
+#     outputs:
+#       soak-end-epoch:
+#         description: 'Unix epoch seconds when this variant''s soak period ended. Non-matrix callers only.'
+#         value: ${{ jobs.soak.outputs.soak_end_epoch }}
+#   workflow_dispatch:
+#     inputs:
+#       name:
+#         description: 'Bare name for this stress test, without c8- prefix'
+#         required: true
+#       secondary-storage-type:
+#         description: 'Secondary database backend for Camunda Platform'
+#         type: choice
+#         options:
+#           - elasticsearch
+#           - opensearch
+#           - postgresql
+#           - mysql
+#           - mariadb
+#           - mssql
+#           - oracle
+#           - none
+#         default: elasticsearch
+#       load-test-load:
+#         description: 'Helm args for workload components (e.g. --set global.preferRest.enabled=true)'
+#         default: ""
+#         required: false
+#       load-test-setup-helm-values:
+#         description: 'Additional Helm values for the load-test-setup chart'
+#         default: ""
+#         required: false
+#       build-frontend:
+#         description: 'Build frontend assets as part of the load test image build'
+#         type: boolean
+#         default: true
+#         required: false
+# 
 defaults:
   run:
     # use bash shell by default to ensure pipefail behavior is the default

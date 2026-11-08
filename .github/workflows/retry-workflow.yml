@@ -5,13 +5,14 @@
 # owner: @camunda/engineering-operations
 name: Retry Workflow Run
 
-on:
-  workflow_dispatch:
-    inputs:
-      run_id:
-        description: The ID of the workflow run to retry
-        required: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       run_id:
+#         description: The ID of the workflow run to retry
+#         required: true
+# 
 jobs:
   retry:
     runs-on: ubuntu-latest

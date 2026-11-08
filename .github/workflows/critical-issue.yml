@@ -1,10 +1,11 @@
 # type: Project Management
 name: Slack notification for critical issue
-on:
-  issues:
-    types:
-      - labeled
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   issues:
+#     types:
+#       - labeled
+# 
 jobs:
   slack-notify:
     name: Notify Slack and ping medics if issue is labeled as critical

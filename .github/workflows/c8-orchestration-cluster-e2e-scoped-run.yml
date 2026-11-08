@@ -30,40 +30,41 @@ name: C8 Orchestration Cluster - Scoped E2E Run
 # V2_STATELESS_TESTS=true, which this workflow does not set, so naming one here
 # would fail with "Project(s) not found".
 
-on:
-  workflow_dispatch:
-    inputs:
-      spec:
-        description: "Spec file, relative to the suite root (e.g. tests/operate/x.spec.ts)"
-        required: true
-        type: string
-      case_id:
-        description: "Coverage-plan case id carried in the test title (e.g. SR-UI-04)"
-        required: true
-        type: string
-      project:
-        description: "Playwright project to scope to"
-        required: true
-        type: choice
-        options:
-          - operate-e2e
-          - identity-e2e
-          - tasklist-e2e
-          - api-tests
-      branch:
-        description: "Branch to test"
-        required: false
-        default: main
-        type: string
-      image_branch:
-        description: >-
-          Branch whose published SNAPSHOT image to run the stack from, when
-          `branch` is not itself one (e.g. a generated test branch). Defaults
-          to `branch`.
-        required: false
-        default: ""
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       spec:
+#         description: "Spec file, relative to the suite root (e.g. tests/operate/x.spec.ts)"
+#         required: true
+#         type: string
+#       case_id:
+#         description: "Coverage-plan case id carried in the test title (e.g. SR-UI-04)"
+#         required: true
+#         type: string
+#       project:
+#         description: "Playwright project to scope to"
+#         required: true
+#         type: choice
+#         options:
+#           - operate-e2e
+#           - identity-e2e
+#           - tasklist-e2e
+#           - api-tests
+#       branch:
+#         description: "Branch to test"
+#         required: false
+#         default: main
+#         type: string
+#       image_branch:
+#         description: >-
+#           Branch whose published SNAPSHOT image to run the stack from, when
+#           `branch` is not itself one (e.g. a generated test branch). Defaults
+#           to `branch`.
+#         required: false
+#         default: ""
+#         type: string
+# 
 permissions: {}
 
 defaults:

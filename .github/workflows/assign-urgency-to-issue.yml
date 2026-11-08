@@ -39,30 +39,31 @@
 #
 name: Assign urgency field when issue is updated
 
-on:
-  issues:
-    types: [opened, labeled, unlabeled, reopened, transferred]
-  workflow_dispatch:
-    inputs:
-      issue_number:
-        description: 'Issue number to process'
-        required: true
-      dry_run:
-        description: 'Dry run mode - calculate urgency but do not update field'
-        required: false
-        type: boolean
-        default: false
-  workflow_call:
-    inputs:
-      issue_number:
-        description: 'Issue number to process (must be numeric)'
-        required: true
-        type: string # workflow_call only supports string/boolean; GraphQL -F coerces to Int
-      repo:
-        description: 'Repository name (e.g. web-modeler)'
-        required: true
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   issues:
+#     types: [opened, labeled, unlabeled, reopened, transferred]
+#   workflow_dispatch:
+#     inputs:
+#       issue_number:
+#         description: 'Issue number to process'
+#         required: true
+#       dry_run:
+#         description: 'Dry run mode - calculate urgency but do not update field'
+#         required: false
+#         type: boolean
+#         default: false
+#   workflow_call:
+#     inputs:
+#       issue_number:
+#         description: 'Issue number to process (must be numeric)'
+#         required: true
+#         type: string # workflow_call only supports string/boolean; GraphQL -F coerces to Int
+#       repo:
+#         description: 'Repository name (e.g. web-modeler)'
+#         required: true
+#         type: string
+# 
 concurrency:
   group: update-urgency-${{ inputs.issue_number || github.event.inputs.issue_number || github.event.issue.number }}-${{ inputs.repo || github.event.repository.name }}
   cancel-in-progress: true

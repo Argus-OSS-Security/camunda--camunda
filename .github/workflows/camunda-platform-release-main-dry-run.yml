@@ -3,22 +3,23 @@
 ---
 name: Camunda Platform Release Dry Run from main
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Specifies the branch, for which the Release Dry Run should be executed'
-        default: 'main'
-        required: false
-        type: string
-      includeOptimize:
-        description: 'Whether to include Optimize in the dry run. Defaults to false.'
-        type: boolean
-        default: false
-  schedule:
-    # Runs at 01:00 every week day; see this link for more: https://crontab.guru/#0_1_*_*_1-5
-    - cron: '0 1 * * 1-5'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: 'Specifies the branch, for which the Release Dry Run should be executed'
+#         default: 'main'
+#         required: false
+#         type: string
+#       includeOptimize:
+#         description: 'Whether to include Optimize in the dry run. Defaults to false.'
+#         type: boolean
+#         default: false
+#   schedule:
+#     # Runs at 01:00 every week day; see this link for more: https://crontab.guru/#0_1_*_*_1-5
+#     - cron: '0 1 * * 1-5'
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
 

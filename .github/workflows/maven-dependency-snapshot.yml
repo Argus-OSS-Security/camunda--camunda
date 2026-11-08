@@ -6,17 +6,18 @@
 # owner: @camunda/engineering-operations
 name: Maven Dependency Snapshot
 
-on:
-  push:
-    branches:
-      - main
-      - stable/**
-    paths:
-      - '**/pom.xml'
-      - 'bom/**'
-      - 'parent/**'
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#       - stable/**
+#     paths:
+#       - '**/pom.xml'
+#       - 'bom/**'
+#       - 'parent/**'
+#   workflow_dispatch:
+# 
 defaults:
   run:
     shell: bash

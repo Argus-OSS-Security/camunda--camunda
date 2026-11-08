@@ -4,18 +4,19 @@
 ---
 name: "Load test: metrics exporter: build/test"
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - "load-tests/metrics-exporter/**"
-      - ".github/workflows/camunda-load-test-metrics-exporter-ci.yaml"
-  pull_request:
-    paths:
-      - "load-tests/metrics-exporter/**"
-      - ".github/workflows/camunda-load-test-metrics-exporter-ci.yaml"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - "load-tests/metrics-exporter/**"
+#       - ".github/workflows/camunda-load-test-metrics-exporter-ci.yaml"
+#   pull_request:
+#     paths:
+#       - "load-tests/metrics-exporter/**"
+#       - ".github/workflows/camunda-load-test-metrics-exporter-ci.yaml"
+# 
 permissions: {}
 
 concurrency:

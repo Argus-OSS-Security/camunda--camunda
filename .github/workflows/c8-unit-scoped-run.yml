@@ -27,27 +27,28 @@ name: C8 Unit - Scoped Run
 # -Dquickly would otherwise skip them too. -DskipITs because a coverage-plan
 # `unit` case is a Surefire test; an `integration` case is not run here.
 
-on:
-  workflow_dispatch:
-    inputs:
-      module:
-        description: "Maven module holding the test (e.g. zeebe/engine)"
-        required: true
-        type: string
-      test_class:
-        description: "Test class, simple name (e.g. AuditLogTest)"
-        required: true
-        type: string
-      case_id:
-        description: "Coverage-plan case id carried in the test's @DisplayName (e.g. AL-CFG-01)"
-        required: true
-        type: string
-      branch:
-        description: "Branch to test"
-        required: false
-        default: main
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       module:
+#         description: "Maven module holding the test (e.g. zeebe/engine)"
+#         required: true
+#         type: string
+#       test_class:
+#         description: "Test class, simple name (e.g. AuditLogTest)"
+#         required: true
+#         type: string
+#       case_id:
+#         description: "Coverage-plan case id carried in the test's @DisplayName (e.g. AL-CFG-01)"
+#         required: true
+#         type: string
+#       branch:
+#         description: "Branch to test"
+#         required: false
+#         default: main
+#         type: string
+# 
 permissions: {}
 
 defaults:

@@ -10,35 +10,36 @@
 
 name: Aurora Async Replication Test
 
-on:
-  workflow_call:
-    inputs:
-      db_engine:
-        description: 'Aurora engine to provision (postgresql or mysql)'
-        type: string
-        required: true
-      skip_destroy:
-        description: 'Keep the Aurora infrastructure after the run (for debugging; destroy manually!)'
-        type: boolean
-        required: false
-        default: false
-  workflow_dispatch:
-    inputs:
-      db_engine:
-        description: 'Aurora engine to provision'
-        type: choice
-        options:
-          - postgresql
-          - mysql
-        required: true
-      skip_destroy:
-        description: 'Keep the Aurora infrastructure after the run (for debugging; destroy manually!)'
-        type: boolean
-        required: false
-        default: false
-  pull_request:
-    types: [labeled, synchronize]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       db_engine:
+#         description: 'Aurora engine to provision (postgresql or mysql)'
+#         type: string
+#         required: true
+#       skip_destroy:
+#         description: 'Keep the Aurora infrastructure after the run (for debugging; destroy manually!)'
+#         type: boolean
+#         required: false
+#         default: false
+#   workflow_dispatch:
+#     inputs:
+#       db_engine:
+#         description: 'Aurora engine to provision'
+#         type: choice
+#         options:
+#           - postgresql
+#           - mysql
+#         required: true
+#       skip_destroy:
+#         description: 'Keep the Aurora infrastructure after the run (for debugging; destroy manually!)'
+#         type: boolean
+#         required: false
+#         default: false
+#   pull_request:
+#     types: [labeled, synchronize]
+# 
 concurrency:
   group: aurora-async-replication-test-${{ inputs.db_engine || 'postgresql' }}
   cancel-in-progress: false

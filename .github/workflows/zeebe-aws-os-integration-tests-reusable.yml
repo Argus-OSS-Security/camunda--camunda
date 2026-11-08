@@ -3,23 +3,24 @@
 # owner: @camunda/core-features, @camunda/data-layer
 name: AWS OpenSearch Integration Tests (single version)
 
-on:
-  workflow_call:
-    inputs:
-      ref:
-        description: Branch or commit to test against
-        type: string
-        default: "main"
-      os_version:
-        description: Version of AWS OpenSearch to run this chain against
-        type: string
-        required: true
-
-# Serializes the whole check -> cleanup -> IT chain per os_version across workflow
-# runs. Each run owns the AWS OpenSearch cluster for its version end to end, so a
-# second run's index cleanup can never delete indices out from under tests that are
-# still running here. Within a run, the integration-test lanes below bound how many
-# jobs hit the cluster at once.
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       ref:
+#         description: Branch or commit to test against
+#         type: string
+#         default: "main"
+#       os_version:
+#         description: Version of AWS OpenSearch to run this chain against
+#         type: string
+#         required: true
+# 
+# # Serializes the whole check -> cleanup -> IT chain per os_version across workflow
+# # runs. Each run owns the AWS OpenSearch cluster for its version end to end, so a
+# # second run's index cleanup can never delete indices out from under tests that are
+# # still running here. Within a run, the integration-test lanes below bound how many
+# # jobs hit the cluster at once.
 concurrency:
   group: aws-opensearch-chain-${{ inputs.os_version }}
   cancel-in-progress: false

@@ -5,38 +5,39 @@
 # owner: @camunda/core-features
 name: Operate CI
 
-on:
-  workflow_dispatch:
-    inputs:
-      runFeTests:
-        description: "Set to true if Operate front-end code was changed"
-        type: boolean
-        required: true
-      runBeTests:
-        description: "Set to true if Operate back-end code was changed"
-        type: boolean
-        required: true
-      use-shared-distball:
-        description: "Restore the shared distball m2 from GCS in ci-webapp-run-ut-reuseable instead of build-zeebe. Set by ci.yml only (which has a build-distball job); leave false for standalone workflow_dispatch."
-        type: boolean
-        required: false
-        default: false
-  workflow_call:
-    inputs:
-      runFeTests:
-        description: "Set to true if Operate front-end code was changed"
-        type: boolean
-        required: true
-      runBeTests:
-        description: "Set to true if Operate back-end code was changed"
-        type: boolean
-        required: true
-      use-shared-distball:
-        description: "Restore the shared distball m2 from GCS in ci-webapp-run-ut-reuseable instead of build-zeebe. Set by ci.yml only (which has a build-distball job); leave false for standalone workflow_dispatch."
-        type: boolean
-        required: false
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       runFeTests:
+#         description: "Set to true if Operate front-end code was changed"
+#         type: boolean
+#         required: true
+#       runBeTests:
+#         description: "Set to true if Operate back-end code was changed"
+#         type: boolean
+#         required: true
+#       use-shared-distball:
+#         description: "Restore the shared distball m2 from GCS in ci-webapp-run-ut-reuseable instead of build-zeebe. Set by ci.yml only (which has a build-distball job); leave false for standalone workflow_dispatch."
+#         type: boolean
+#         required: false
+#         default: false
+#   workflow_call:
+#     inputs:
+#       runFeTests:
+#         description: "Set to true if Operate front-end code was changed"
+#         type: boolean
+#         required: true
+#       runBeTests:
+#         description: "Set to true if Operate back-end code was changed"
+#         type: boolean
+#         required: true
+#       use-shared-distball:
+#         description: "Restore the shared distball m2 from GCS in ci-webapp-run-ut-reuseable instead of build-zeebe. Set by ci.yml only (which has a build-distball job); leave false for standalone workflow_dispatch."
+#         type: boolean
+#         required: false
+#         default: false
+# 
 defaults:
   run:
     # use bash shell by default to ensure pipefail behavior is the default

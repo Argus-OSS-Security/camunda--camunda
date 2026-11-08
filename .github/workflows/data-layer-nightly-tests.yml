@@ -3,14 +3,15 @@
 # owner: @camunda/data-layer
 name: Data Layer Nightly Tests
 
-on:
-  schedule:
-    # Run at 02:00 every night
-    - cron: '0 2 * * *'
-  workflow_dispatch:
-  pull_request:
-    types: [labeled, synchronize]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Run at 02:00 every night
+#     - cron: '0 2 * * *'
+#   workflow_dispatch:
+#   pull_request:
+#     types: [labeled, synchronize]
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

@@ -8,11 +8,12 @@
 # type: CI
 # owner: @camunda/reliability-testing
 name: Scheduled Camunda Release Load Tests
-on:
-  schedule:
-    - cron: '0 0 * * 1-5' # every weekday (Mon-Fri) at 00:00 UTC
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '0 0 * * 1-5' # every weekday (Mon-Fri) at 00:00 UTC
+#   workflow_dispatch: {}
+# 
 defaults:
   run:
     # use bash shell by default to ensure pipefail behavior is the default

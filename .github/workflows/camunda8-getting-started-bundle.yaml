@@ -3,25 +3,26 @@
 ---
 name: "Camunda 8: Getting Started Bundle"
 
-on:
-  workflow_dispatch:
-    inputs:
-      c8run_version:
-        description: "The release version of c8run to use (e.g., 8.8.6). Use 'latest' to auto-detect the latest release."
-        type: string
-        required: true
-        default: "latest"
-      modeler_version:
-        description: "The version of Camunda Desktop Modeler to bundle (e.g., 5.34.0). Use 'latest' to auto-detect the latest release."
-        type: string
-        required: true
-        default: "latest"
-      dry_run:
-        description: "Dry run only: artifacts are only uploaded to the workflow run, not to the GitHub release."
-        type: boolean
-        required: true
-        default: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       c8run_version:
+#         description: "The release version of c8run to use (e.g., 8.8.6). Use 'latest' to auto-detect the latest release."
+#         type: string
+#         required: true
+#         default: "latest"
+#       modeler_version:
+#         description: "The version of Camunda Desktop Modeler to bundle (e.g., 5.34.0). Use 'latest' to auto-detect the latest release."
+#         type: string
+#         required: true
+#         default: "latest"
+#       dry_run:
+#         description: "Dry run only: artifacts are only uploaded to the workflow run, not to the GitHub release."
+#         type: boolean
+#         required: true
+#         default: true
+# 
 permissions: {}
 
 defaults:

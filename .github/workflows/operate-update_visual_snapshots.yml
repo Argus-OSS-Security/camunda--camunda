@@ -4,12 +4,13 @@
 # owner: @camunda/core-features
 name: Operate Update Visual Regression Snapshots
 
-on:
-  pull_request:
-    types: [labeled, synchronize]
-
-# Limit workflow to 1 concurrent run per ref (branch): new commit -> old runs are canceled to save costs
-# Exception for main branch: complete builds for every commit needed for confidence
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     types: [labeled, synchronize]
+# 
+# # Limit workflow to 1 concurrent run per ref (branch): new commit -> old runs are canceled to save costs
+# # Exception for main branch: complete builds for every commit needed for confidence
 concurrency:
   cancel-in-progress: true
   group: ${{ format('{0}-{1}', github.workflow, github.ref == 'refs/heads/main' && github.sha || github.ref) }}

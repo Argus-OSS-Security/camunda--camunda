@@ -7,9 +7,10 @@
 # https://camunda.github.io/camunda/ci/#unified-ci
 name: Release-notes action CI
 
-on:
-  workflow_call: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call: {}
+# 
 permissions: {}
 
 defaults:

@@ -29,16 +29,17 @@
 ---
 name: Release-notes PR-gate
 
-on:
-  pull_request:
-    # The branches whose release notes this gate governs.
-    branches: [main, 'stable/**']
-    # `edited` is load-bearing: a body edit is how an author fixes a gate
-    # failure, and it is also how a passing PR could silently lose its issue
-    # link. Without it the gate's verdict can go stale against the current body.
-    types: [opened, edited, synchronize, reopened]
-
-# One run per PR; a newer event supersedes an in-flight one.
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     # The branches whose release notes this gate governs.
+#     branches: [main, 'stable/**']
+#     # `edited` is load-bearing: a body edit is how an author fixes a gate
+#     # failure, and it is also how a passing PR could silently lose its issue
+#     # link. Without it the gate's verdict can go stale against the current body.
+#     types: [opened, edited, synchronize, reopened]
+# 
+# # One run per PR; a newer event supersedes an in-flight one.
 concurrency:
   group: release-notes-pr-gate-${{ github.event.pull_request.number }}
   cancel-in-progress: true

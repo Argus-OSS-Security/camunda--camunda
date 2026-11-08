@@ -8,36 +8,37 @@
 ---
 name: C8 Orchestration Cluster Unskip Verify Agent
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Unskip PR branch (e.g. auto/unskip-closed-bugs-camunda-stable-8.9-e2e)'
-        required: false
-        default: ''
-      pr_number:
-        description: 'Unskip PR number (alternative to branch)'
-        required: false
-        default: ''
-      trigger_on_demand:
-        description: 'Dispatch the full-matrix on-demand run on the final branch state'
-        type: boolean
-        required: false
-        default: true
-      slack_thread_ts:
-        description: 'Slack thread ts to reply to (posted by the unskip workflow)'
-        required: false
-        default: ''
-      slack_channel:
-        description: 'Slack channel ID for the thread reply'
-        required: false
-        default: ''
-      send_slack_notification:
-        description: 'Post a Slack reply when done'
-        type: boolean
-        required: false
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: 'Unskip PR branch (e.g. auto/unskip-closed-bugs-camunda-stable-8.9-e2e)'
+#         required: false
+#         default: ''
+#       pr_number:
+#         description: 'Unskip PR number (alternative to branch)'
+#         required: false
+#         default: ''
+#       trigger_on_demand:
+#         description: 'Dispatch the full-matrix on-demand run on the final branch state'
+#         type: boolean
+#         required: false
+#         default: true
+#       slack_thread_ts:
+#         description: 'Slack thread ts to reply to (posted by the unskip workflow)'
+#         required: false
+#         default: ''
+#       slack_channel:
+#         description: 'Slack channel ID for the thread reply'
+#         required: false
+#         default: ''
+#       send_slack_notification:
+#         description: 'Post a Slack reply when done'
+#         type: boolean
+#         required: false
+#         default: false
+# 
 defaults:
   run:
     shell: bash

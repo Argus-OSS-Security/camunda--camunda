@@ -4,16 +4,17 @@
 ---
 name: Release Branch Notifications
 
-on:
-  pull_request:
-    types: [labeled]
-    branches:
-      - main
-      - stable/**
-  push:
-    branches:
-      - release-*
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     types: [labeled]
+#     branches:
+#       - main
+#       - stable/**
+#   push:
+#     branches:
+#       - release-*
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
 

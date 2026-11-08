@@ -5,15 +5,16 @@
 ---
 name: Renovate Daily
 
-on:
-  schedule:
-    - cron: '0 11 * * 1-5'  # Monday through Friday at 11:00 AM UTC
-  pull_request:
-    paths:
-      - '.github/workflows/renovate-daily.yml'
-      - '.ci/scripts/renovate-assignments.py'
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '0 11 * * 1-5'  # Monday through Friday at 11:00 AM UTC
+#   pull_request:
+#     paths:
+#       - '.github/workflows/renovate-daily.yml'
+#       - '.ci/scripts/renovate-assignments.py'
+#   workflow_dispatch: {}
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
   GHA_BEST_PRACTICES_LINTER: enabled

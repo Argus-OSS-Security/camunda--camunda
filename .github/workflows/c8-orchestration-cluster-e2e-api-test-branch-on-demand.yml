@@ -6,14 +6,15 @@
 ---
 name: C8 Orchestration Cluster API E2E Tests On Demand for the code in a branch
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: "Enter the branch to test"
-        required: true
-        default: "main"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: "Enter the branch to test"
+#         required: true
+#         default: "main"
+# 
 permissions:
   contents: read
 

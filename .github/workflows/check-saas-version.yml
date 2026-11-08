@@ -14,11 +14,12 @@
 
 name: Check SaaS version
 
-on:
-  pull_request:
-    paths:
-      - .ci/db-versions.yml
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .ci/db-versions.yml
+# 
 jobs:
   check-saas-version:
     name: Check SaaS version does not decrease

@@ -4,14 +4,15 @@
 ---
 name: Codeowners File Owner Lookup
 
-on:
-  workflow_dispatch:
-    inputs:
-      file_path:
-        description: 'Repo-relative path to the file (e.g. zeebe/engine/pom.xml)'
-        required: true
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       file_path:
+#         description: 'Repo-relative path to the file (e.g. zeebe/engine/pom.xml)'
+#         required: true
+#         type: string
+# 
 defaults:
   run:
     # use bash shell by default to ensure pipefail behavior is the default

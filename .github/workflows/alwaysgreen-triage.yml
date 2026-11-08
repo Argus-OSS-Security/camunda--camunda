@@ -22,67 +22,68 @@ name: AlwaysGreen Triage
 # reason: a stable caller passes them, and a workflow_call that does not declare an
 # input a caller sends is a hard error on the caller's side.
 
-on:
-  workflow_call:
-    inputs:
-      base_ref:
-        description: 'Branch the failing run was on (main, stable/8.x)'
-        required: true
-        type: string
-      chart_version:
-        description: >
-          Chart directory the run deployed. Accepted for caller compatibility; the
-          central triage derives what it needs from the run itself.
-        required: false
-        type: string
-        default: ''
-      dry_run:
-        description: 'Classify and report, but do not dispatch a fix agent'
-        required: false
-        type: boolean
-        default: false
-      max_dispatches:
-        description: 'Cap on fix-agent dispatches for this run'
-        required: false
-        type: number
-        default: 2
-      parent_slack_ts:
-        description: >
-          ts of the post-failure-feedback message for this failure. When set, triage
-          replies in that thread instead of starting a new one.
-        required: false
-        type: string
-        default: ''
-      parent_slack_channel:
-        description: 'Channel of parent_slack_ts'
-        required: false
-        type: string
-        default: ''
-      tooling_ref:
-        description: >
-          Ref carrying this workflow's local actions. A reusable workflow's checkout
-          takes the CALLER's ref, and a stable branch does not have main's tree, so
-          the tooling ref has to be named rather than inherited.
-        required: false
-        type: string
-        default: ''
-
-  # Replay a past run by id, and the only way to exercise a change to this file
-  # before it is on the default branch.
-  workflow_dispatch:
-    inputs:
-      run_id:
-        description: 'Run to hand over. Required: a replay always names its target.'
-        required: true
-      base_ref:
-        description: 'Branch the failing run was on (main, stable/8.x)'
-        required: true
-        default: main
-      tooling_ref:
-        description: 'Ref carrying the AlwaysGreen tooling (defaults to main)'
-        required: false
-        default: ''
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       base_ref:
+#         description: 'Branch the failing run was on (main, stable/8.x)'
+#         required: true
+#         type: string
+#       chart_version:
+#         description: >
+#           Chart directory the run deployed. Accepted for caller compatibility; the
+#           central triage derives what it needs from the run itself.
+#         required: false
+#         type: string
+#         default: ''
+#       dry_run:
+#         description: 'Classify and report, but do not dispatch a fix agent'
+#         required: false
+#         type: boolean
+#         default: false
+#       max_dispatches:
+#         description: 'Cap on fix-agent dispatches for this run'
+#         required: false
+#         type: number
+#         default: 2
+#       parent_slack_ts:
+#         description: >
+#           ts of the post-failure-feedback message for this failure. When set, triage
+#           replies in that thread instead of starting a new one.
+#         required: false
+#         type: string
+#         default: ''
+#       parent_slack_channel:
+#         description: 'Channel of parent_slack_ts'
+#         required: false
+#         type: string
+#         default: ''
+#       tooling_ref:
+#         description: >
+#           Ref carrying this workflow's local actions. A reusable workflow's checkout
+#           takes the CALLER's ref, and a stable branch does not have main's tree, so
+#           the tooling ref has to be named rather than inherited.
+#         required: false
+#         type: string
+#         default: ''
+# 
+#   # Replay a past run by id, and the only way to exercise a change to this file
+#   # before it is on the default branch.
+#   workflow_dispatch:
+#     inputs:
+#       run_id:
+#         description: 'Run to hand over. Required: a replay always names its target.'
+#         required: true
+#       base_ref:
+#         description: 'Branch the failing run was on (main, stable/8.x)'
+#         required: true
+#         default: main
+#       tooling_ref:
+#         description: 'Ref carrying the AlwaysGreen tooling (defaults to main)'
+#         required: false
+#         default: ''
+# 
 permissions:
   contents: read
 

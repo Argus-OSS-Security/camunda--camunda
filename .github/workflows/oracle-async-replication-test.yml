@@ -8,51 +8,52 @@
 
 name: Oracle Async Replication Test
 
-on:
-  workflow_call:
-    inputs:
-      oracle_byol_acknowledged:
-        description: 'Acknowledge the Oracle Enterprise Edition BYOL requirement'
-        type: boolean
-        required: true
-      oracle_engine_version:
-        description: 'RDS for Oracle 19c engine version, or auto for the newest common version'
-        type: string
-        required: false
-        default: auto
-      oracle_instance_class:
-        description: 'RDS for Oracle instance class (must have at least two vCPUs)'
-        type: string
-        required: false
-      skip_destroy:
-        description: 'Keep the Oracle infrastructure after the run (for debugging; destroy manually!)'
-        type: boolean
-        required: false
-        default: false
-  workflow_dispatch:
-    inputs:
-      oracle_byol_acknowledged:
-        description: 'Acknowledge the Oracle Enterprise Edition BYOL requirement'
-        type: boolean
-        required: true
-        default: false
-      oracle_engine_version:
-        description: 'RDS for Oracle 19c engine version, or auto for the newest common version'
-        type: string
-        required: false
-        default: auto
-      oracle_instance_class:
-        description: 'RDS for Oracle instance class (must have at least two vCPUs)'
-        type: string
-        required: false
-      skip_destroy:
-        description: 'Keep the Oracle infrastructure after the run (for debugging; destroy manually!)'
-        type: boolean
-        required: false
-        default: false
-  pull_request:
-    types: [labeled, synchronize]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       oracle_byol_acknowledged:
+#         description: 'Acknowledge the Oracle Enterprise Edition BYOL requirement'
+#         type: boolean
+#         required: true
+#       oracle_engine_version:
+#         description: 'RDS for Oracle 19c engine version, or auto for the newest common version'
+#         type: string
+#         required: false
+#         default: auto
+#       oracle_instance_class:
+#         description: 'RDS for Oracle instance class (must have at least two vCPUs)'
+#         type: string
+#         required: false
+#       skip_destroy:
+#         description: 'Keep the Oracle infrastructure after the run (for debugging; destroy manually!)'
+#         type: boolean
+#         required: false
+#         default: false
+#   workflow_dispatch:
+#     inputs:
+#       oracle_byol_acknowledged:
+#         description: 'Acknowledge the Oracle Enterprise Edition BYOL requirement'
+#         type: boolean
+#         required: true
+#         default: false
+#       oracle_engine_version:
+#         description: 'RDS for Oracle 19c engine version, or auto for the newest common version'
+#         type: string
+#         required: false
+#         default: auto
+#       oracle_instance_class:
+#         description: 'RDS for Oracle instance class (must have at least two vCPUs)'
+#         type: string
+#         required: false
+#       skip_destroy:
+#         description: 'Keep the Oracle infrastructure after the run (for debugging; destroy manually!)'
+#         type: boolean
+#         required: false
+#         default: false
+#   pull_request:
+#     types: [labeled, synchronize]
+# 
 concurrency:
   group: oracle-async-replication-test
   cancel-in-progress: false

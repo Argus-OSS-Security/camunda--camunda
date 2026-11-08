@@ -5,9 +5,10 @@
 # owner: @camunda/orchestration-cluster-webapps
 name: Webapp Client Jobs
 
-on:
-  workflow_call: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call: {}
+# 
 env:
   GHA_BEST_PRACTICES_LINTER: enabled
   TEST_PRODUCT: Orchestration Cluster Webapp

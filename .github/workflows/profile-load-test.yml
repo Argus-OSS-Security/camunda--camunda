@@ -12,46 +12,47 @@
 name: Profile running load test
 run-name: "Profile running load test: ${{ inputs.name }}"
 
-on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Specifies the name of the load test to profile'
-        required: true
-      pod:
-        description: 'Specifies the pod name to profile. Leave empty to profile all three pods (camunda-0, camunda-1, camunda-2), or specify a pod name to profile just that one.'
-        default: ''
-        required: false
-      profiler_options:
-        description: 'Optional additional flags for async-profiler (e.g., "-t" for flamegraph format)'
-        default: ''
-        required: false
-      duration-seconds:
-        description: 'Profiling duration in seconds'
-        default: '100'
-        required: false
-  workflow_call:
-    inputs:
-      name:
-        description: 'Specifies the name of the load test to profile'
-        required: true
-        type: string
-      pod:
-        description: 'Specifies the pod name to profile. Leave empty to profile all three pods, or specify a pod name to profile just that one.'
-        default: ''
-        required: false
-        type: string
-      profiler_options:
-        description: 'Optional additional flags for async-profiler (e.g., "-t" for flamegraph format)'
-        default: ''
-        required: false
-        type: string
-      duration-seconds:
-        description: 'Profiling duration in seconds'
-        default: '100'
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       name:
+#         description: 'Specifies the name of the load test to profile'
+#         required: true
+#       pod:
+#         description: 'Specifies the pod name to profile. Leave empty to profile all three pods (camunda-0, camunda-1, camunda-2), or specify a pod name to profile just that one.'
+#         default: ''
+#         required: false
+#       profiler_options:
+#         description: 'Optional additional flags for async-profiler (e.g., "-t" for flamegraph format)'
+#         default: ''
+#         required: false
+#       duration-seconds:
+#         description: 'Profiling duration in seconds'
+#         default: '100'
+#         required: false
+#   workflow_call:
+#     inputs:
+#       name:
+#         description: 'Specifies the name of the load test to profile'
+#         required: true
+#         type: string
+#       pod:
+#         description: 'Specifies the pod name to profile. Leave empty to profile all three pods, or specify a pod name to profile just that one.'
+#         default: ''
+#         required: false
+#         type: string
+#       profiler_options:
+#         description: 'Optional additional flags for async-profiler (e.g., "-t" for flamegraph format)'
+#         default: ''
+#         required: false
+#         type: string
+#       duration-seconds:
+#         description: 'Profiling duration in seconds'
+#         default: '100'
+#         required: false
+#         type: string
+# 
 defaults:
   run:
     # use bash shell by default to ensure pipefail behavior is the default

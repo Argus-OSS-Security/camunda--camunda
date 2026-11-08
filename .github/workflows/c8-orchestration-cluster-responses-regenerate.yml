@@ -18,11 +18,12 @@
 ---
 name: C8 Orchestration Cluster Responses Regeneration
 
-on:
-  workflow_dispatch: {}
-  schedule:
-    - cron: '0 12 * * *'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch: {}
+#   schedule:
+#     - cron: '0 12 * * *'
+# 
 defaults:
   run:
     shell: bash

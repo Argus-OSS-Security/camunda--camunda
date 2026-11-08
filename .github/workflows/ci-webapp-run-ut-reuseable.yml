@@ -5,35 +5,36 @@
 ---
 name: Webapp Run Unit Tests Reusable
 
-on:
-  workflow_call:
-    inputs:
-      componentName:
-        description: "The name of the component under test"
-        required: true
-        type: string
-      suite:
-        description: "The suite under test. ie, DataLayer or CoreFeatures"
-        required: true
-        type: string
-      suiteName:
-        description: "Well formatted name of the suite under test. ie, 'Data Layer' or 'Core Features'"
-        required: true
-        type: string
-      owner:
-        description: "Canonical GitHub team handle owning the suite under test, e.g. '@camunda/data-layer'"
-        required: true
-        type: string
-      use-shared-distball:
-        required: false
-        type: boolean
-        default: false
-        description: >-
-          When true, restore the io.camunda SNAPSHOTs from the run-scoped GCS
-          artifact produced by ci.yml's build-distball job instead of running a
-          local build-zeebe reactor. Only safe when the run has a build-distball
-          job (i.e. via ci.yml). See #52693.
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       componentName:
+#         description: "The name of the component under test"
+#         required: true
+#         type: string
+#       suite:
+#         description: "The suite under test. ie, DataLayer or CoreFeatures"
+#         required: true
+#         type: string
+#       suiteName:
+#         description: "Well formatted name of the suite under test. ie, 'Data Layer' or 'Core Features'"
+#         required: true
+#         type: string
+#       owner:
+#         description: "Canonical GitHub team handle owning the suite under test, e.g. '@camunda/data-layer'"
+#         required: true
+#         type: string
+#       use-shared-distball:
+#         required: false
+#         type: boolean
+#         default: false
+#         description: >-
+#           When true, restore the io.camunda SNAPSHOTs from the run-scoped GCS
+#           artifact produced by ci.yml's build-distball job instead of running a
+#           local build-zeebe reactor. Only safe when the run has a build-distball
+#           job (i.e. via ci.yml). See #52693.
+# 
 env:
   GHA_BEST_PRACTICES_LINTER: enabled
   TEST_OWNER: ${{ inputs.owner }}

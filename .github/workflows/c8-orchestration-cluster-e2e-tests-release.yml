@@ -4,19 +4,20 @@
 ---
 name: C8 Orchestration Cluster E2E Tests Release
 
-on:
-  workflow_dispatch:
-    inputs:
-      monorepo_release:
-        description: "Enter the monorepo release version (e.g., 8.8.0, 8.8.1, 8.8.0-alpha8, 8.8.0-alpha8-rc1)"
-        required: true
-        type: string
-      skip_slack_notification:
-        description: "Skip sending the Slack notification after tests complete"
-        required: false
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       monorepo_release:
+#         description: "Enter the monorepo release version (e.g., 8.8.0, 8.8.1, 8.8.0-alpha8, 8.8.0-alpha8-rc1)"
+#         required: true
+#         type: string
+#       skip_slack_notification:
+#         description: "Skip sending the Slack notification after tests complete"
+#         required: false
+#         type: boolean
+#         default: false
+# 
 permissions:
   contents: read
 

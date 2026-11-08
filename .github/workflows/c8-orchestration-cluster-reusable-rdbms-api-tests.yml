@@ -8,19 +8,20 @@
 ---
 name: C8 Orchestration Cluster - Reusable API Tests (RDBMS)
 
-on:
-  workflow_call:
-    inputs:
-      branch:
-        description: "Branch to test (e.g. stable/8.9, main)"
-        required: true
-        type: string
-      camunda_mode:
-        description: "Camunda deployment mode: 'profiles' (default Spring profiles) or 'all-in-one'"
-        required: false
-        type: string
-        default: profiles
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       branch:
+#         description: "Branch to test (e.g. stable/8.9, main)"
+#         required: true
+#         type: string
+#       camunda_mode:
+#         description: "Camunda deployment mode: 'profiles' (default Spring profiles) or 'all-in-one'"
+#         required: false
+#         type: string
+#         default: profiles
+# 
 permissions:
   contents: read
 

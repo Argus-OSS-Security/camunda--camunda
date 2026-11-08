@@ -3,19 +3,20 @@
 ---
 name: Deploy Camunda Docker Images to SaaS registry
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to deploy an image for'
-        required: true
-        type: string
-      camunda-image-only:
-        description: 'Whether to build the camunda/camunda image only'
-        required: false
-        default: false
-        type: boolean
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: 'Branch to deploy an image for'
+#         required: true
+#         type: string
+#       camunda-image-only:
+#         description: 'Whether to build the camunda/camunda image only'
+#         required: false
+#         default: false
+#         type: boolean
+# 
 defaults:
   run:
     # use bash shell by default to ensure pipefail behavior is the default

@@ -8,11 +8,12 @@
 #
 name: Assign urgency to new issues in Quality Board
 
-on:
-  schedule:
-    - cron: '0 * * * *' # every hour
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '0 * * * *' # every hour
+#   workflow_dispatch: {}
+# 
 env:
   TEST_OWNER: '@camunda/core-features'
 

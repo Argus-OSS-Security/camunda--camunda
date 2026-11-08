@@ -5,21 +5,22 @@
 ---
 name: Renovate PR maintainer
 
-on:
-  schedule:
-  # Runs hourly, but actions are taken selectively based on PR state and defined strategy, not on every run
-  - cron: "53 * * * *"
-  # Monday 06:00 UTC: weekly digest of stuck Renovate PRs (dirty / awaiting rebase
-  # for too long) to #top-monorepo-ci.
-  - cron: "0 6 * * 1"
-  workflow_dispatch:
-    inputs:
-      dry-run:
-        description: Run without modifying any PR (check to enable dry run)
-        required: false
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#   # Runs hourly, but actions are taken selectively based on PR state and defined strategy, not on every run
+#   - cron: "53 * * * *"
+#   # Monday 06:00 UTC: weekly digest of stuck Renovate PRs (dirty / awaiting rebase
+#   # for too long) to #top-monorepo-ci.
+#   - cron: "0 6 * * 1"
+#   workflow_dispatch:
+#     inputs:
+#       dry-run:
+#         description: Run without modifying any PR (check to enable dry run)
+#         required: false
+#         type: boolean
+#         default: false
+# 
 env:
   GHA_BEST_PRACTICES_LINTER: enabled
 

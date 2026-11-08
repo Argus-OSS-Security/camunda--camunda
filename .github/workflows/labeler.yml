@@ -3,9 +3,10 @@
 ---
 name: "Pull Request Labeler"
 
-on:
-  pull_request_target: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request_target: {}
+# 
 jobs:
   labeler:
     permissions:

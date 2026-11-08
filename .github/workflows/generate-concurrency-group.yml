@@ -6,18 +6,19 @@ name: Generate Concurrency Group
 permissions:
   contents: read
 
-on:
-  workflow_call:
-    inputs:
-      base_group_name:
-        description: "Base concurrency group name for the workflow"
-        required: true
-        type: string
-    outputs:
-      concurrency_group_name:
-        description: "Concurrency group name for the workflow"
-        value: ${{ jobs.get-concurrency-group-dynamically.outputs.result }}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       base_group_name:
+#         description: "Base concurrency group name for the workflow"
+#         required: true
+#         type: string
+#     outputs:
+#       concurrency_group_name:
+#         description: "Concurrency group name for the workflow"
+#         value: ${{ jobs.get-concurrency-group-dynamically.outputs.result }}
+# 
 env:
   GHA_BEST_PRACTICES_LINTER: enabled
 

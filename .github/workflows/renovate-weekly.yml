@@ -5,14 +5,15 @@
 ---
 name: Renovate Weekly
 
-on:
-  schedule:
-    - cron: '0 6 * * 1'  # Monday
-  pull_request:
-    paths:
-      - '.github/workflows/renovate-weekly.yml'
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '0 6 * * 1'  # Monday
+#   pull_request:
+#     paths:
+#       - '.github/workflows/renovate-weekly.yml'
+#   workflow_dispatch: {}
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
   GHA_BEST_PRACTICES_LINTER: enabled

@@ -3,14 +3,15 @@
 # owner: @camunda/data-layer
 name: Archiverless Nightly Tests
 
-on:
-  schedule:
-    # Run at 04:00 every night
-    - cron: '0 4 * * *'
-  workflow_dispatch:
-  pull_request:
-    types: [ labeled, synchronize ]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Run at 04:00 every night
+#     - cron: '0 4 * * *'
+#   workflow_dispatch:
+#   pull_request:
+#     types: [ labeled, synchronize ]
+# 
 env:
   TEST_OWNER: '@camunda/data-layer'
 

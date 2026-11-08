@@ -57,35 +57,36 @@
 #   - ghcr.io/github/github-mcp-server:v1.11.0@sha256:fbec75de11c255213fa08d80fb166abe73d851fff631c51c0079872967720699
 
 name: "mutation-testing-pr-review"
-on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - zeebe/atomix/**src/main/**
-      - zeebe/backup/**src/main/**
-      - zeebe/backup-stores/**src/main/**
-      - zeebe/broker-client/**src/main/**
-      - zeebe/dynamic-config/**src/main/**
-      - zeebe/dynamic-node-id-provider/**src/main/**
-      - zeebe/journal/**src/main/**
-      - zeebe/logstreams/**src/main/**
-      - zeebe/restore/**src/main/**
-      - zeebe/restore-standalone/**src/main/**
-      - zeebe/scheduler/**src/main/**
-      - zeebe/snapshot/**src/main/**
-      - zeebe/stream-platform/**src/main/**
-      - zeebe/transport/**src/main/**
-      - zeebe/broker/src/main/java/io/camunda/zeebe/broker/clustering/**
-      - zeebe/broker/src/main/java/io/camunda/zeebe/broker/logstreams/**
-      - zeebe/broker/src/main/java/io/camunda/zeebe/broker/partitioning/**
-      - zeebe/broker/src/main/java/io/camunda/zeebe/broker/raft/**
-      - zeebe/broker/src/main/java/io/camunda/zeebe/broker/transport/**
-    types:
-      - opened
-      - synchronize
-      - reopened
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     branches:
+#       - main
+#     paths:
+#       - zeebe/atomix/**src/main/**
+#       - zeebe/backup/**src/main/**
+#       - zeebe/backup-stores/**src/main/**
+#       - zeebe/broker-client/**src/main/**
+#       - zeebe/dynamic-config/**src/main/**
+#       - zeebe/dynamic-node-id-provider/**src/main/**
+#       - zeebe/journal/**src/main/**
+#       - zeebe/logstreams/**src/main/**
+#       - zeebe/restore/**src/main/**
+#       - zeebe/restore-standalone/**src/main/**
+#       - zeebe/scheduler/**src/main/**
+#       - zeebe/snapshot/**src/main/**
+#       - zeebe/stream-platform/**src/main/**
+#       - zeebe/transport/**src/main/**
+#       - zeebe/broker/src/main/java/io/camunda/zeebe/broker/clustering/**
+#       - zeebe/broker/src/main/java/io/camunda/zeebe/broker/logstreams/**
+#       - zeebe/broker/src/main/java/io/camunda/zeebe/broker/partitioning/**
+#       - zeebe/broker/src/main/java/io/camunda/zeebe/broker/raft/**
+#       - zeebe/broker/src/main/java/io/camunda/zeebe/broker/transport/**
+#     types:
+#       - opened
+#       - synchronize
+#       - reopened
+# 
 permissions: {}
 
 concurrency:

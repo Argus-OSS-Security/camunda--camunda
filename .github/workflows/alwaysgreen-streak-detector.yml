@@ -22,11 +22,12 @@
 ---
 name: AlwaysGreen Streak Detector
 
-on:
-  schedule:
-    - cron: '*/15 * * * *'   # every 15 minutes
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '*/15 * * * *'   # every 15 minutes
+#   workflow_dispatch: {}
+# 
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: true   # only one scan at a time; next tick supersedes

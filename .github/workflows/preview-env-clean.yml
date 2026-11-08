@@ -3,26 +3,27 @@
 ---
 name: Preview Env Clean
 
-on:
-  schedule:
-  - cron: 0 6,22 * * *
-  workflow_call:
-    inputs:
-      pull-request:
-        description: |
-          Limit cleanup to a single pull request (number) and a minimal mode.
-          Useful for quickly eliminating inconsistencies while waiting for the full cleanup cycle to run.
-        required: false
-        type: number
-    secrets:
-      VAULT_ADDR:
-        required: true
-      VAULT_ROLE_ID:
-        required: true
-      VAULT_SECRET_ID:
-        required: true
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#   - cron: 0 6,22 * * *
+#   workflow_call:
+#     inputs:
+#       pull-request:
+#         description: |
+#           Limit cleanup to a single pull request (number) and a minimal mode.
+#           Useful for quickly eliminating inconsistencies while waiting for the full cleanup cycle to run.
+#         required: false
+#         type: number
+#     secrets:
+#       VAULT_ADDR:
+#         required: true
+#       VAULT_ROLE_ID:
+#         required: true
+#       VAULT_SECRET_ID:
+#         required: true
+#   workflow_dispatch:
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
 

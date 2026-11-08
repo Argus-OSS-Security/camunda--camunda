@@ -3,12 +3,13 @@
 # owner: @camunda/c8-testing
 name: CPT Compatibility Tests - Trigger
 
-on:
-  schedule:
-    # Run daily at 02:00 UTC
-    - cron: "0 2 * * *"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Run daily at 02:00 UTC
+#     - cron: "0 2 * * *"
+#   workflow_dispatch:
+# 
 permissions:
   contents: read
   actions: write

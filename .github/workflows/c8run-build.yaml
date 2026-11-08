@@ -5,26 +5,27 @@
 ---
 name: "C8Run: build/test"
 
-on:
-  push:
-    branches:
-      - "main"
-      - "stable/**"
-      - "release/**"
-    paths:
-      - "c8run/**"
-      - ".github/actions/setup-c8run/action.yml"
-      - ".github/workflows/c8run-build.yaml"
-  pull_request:
-    paths:
-      - "c8run/**"
-      - ".github/actions/setup-c8run/action.yml"
-      - ".github/workflows/c8run-build.yaml"
-  schedule:
-    # Run at 23:30 UTC every day
-    - cron: "30 23 * * *"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - "main"
+#       - "stable/**"
+#       - "release/**"
+#     paths:
+#       - "c8run/**"
+#       - ".github/actions/setup-c8run/action.yml"
+#       - ".github/workflows/c8run-build.yaml"
+#   pull_request:
+#     paths:
+#       - "c8run/**"
+#       - ".github/actions/setup-c8run/action.yml"
+#       - ".github/workflows/c8run-build.yaml"
+#   schedule:
+#     # Run at 23:30 UTC every day
+#     - cron: "30 23 * * *"
+#   workflow_dispatch:
+# 
 env:
   GO_VERSION: "1.27.3"
   TEST_OWNER: '@camunda/distribution'

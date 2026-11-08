@@ -3,24 +3,25 @@
 ---
 name: Preview Environment Teardown
 
-on:
-  pull_request:
-    types: [unlabeled, closed]
-  workflow_call:
-    inputs:
-      app-name:
-        description: |
-          ArgoCD app name to tear down
-        required: true
-        type: string
-      ref:
-        description: |
-          Git ref for checkout and ArgoCD revision.
-          Required for cross-branch calls since reusable workflows inherit the caller's ref.
-        required: false
-        type: string
-        default: ''
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     types: [unlabeled, closed]
+#   workflow_call:
+#     inputs:
+#       app-name:
+#         description: |
+#           ArgoCD app name to tear down
+#         required: true
+#         type: string
+#       ref:
+#         description: |
+#           Git ref for checkout and ArgoCD revision.
+#           Required for cross-branch calls since reusable workflows inherit the caller's ref.
+#         required: false
+#         type: string
+#         default: ''
+# 
 jobs:
   teardown-preview:
     # For workflow_call: inputs.app-name is set (github.event_name is inherited from caller, not 'workflow_call')

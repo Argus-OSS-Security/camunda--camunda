@@ -14,23 +14,24 @@
 # type: CI
 # owner: @camunda/reliability-testing
 name: Camunda weekly load tests
-on:
-  workflow_dispatch:
-     inputs:
-      reuse-tag:
-        description: 'Docker image tag, that should be reused for the weekly main load tests. Allows to skip the docker image build step, can be used for recreating previous weekly tests. Does not affect the stable-branch load tests.'
-        type: string
-        default: ""
-        required: false
-      ttl:
-        description: 'Specifies after how many days the weekly main load test namespaces should be deleted. Useful to adjust if we recreate the weekly tests. Does not affect the stable-branch load tests, which are fixed at 7 days.'
-        type: number
-        default: 28
-        required: false
-  schedule:
-    # Runs at 1am every monday https://crontab.guru/#0_1_*_*_1
-    - cron: 0 1 * * 1
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#      inputs:
+#       reuse-tag:
+#         description: 'Docker image tag, that should be reused for the weekly main load tests. Allows to skip the docker image build step, can be used for recreating previous weekly tests. Does not affect the stable-branch load tests.'
+#         type: string
+#         default: ""
+#         required: false
+#       ttl:
+#         description: 'Specifies after how many days the weekly main load test namespaces should be deleted. Useful to adjust if we recreate the weekly tests. Does not affect the stable-branch load tests, which are fixed at 7 days.'
+#         type: number
+#         default: 28
+#         required: false
+#   schedule:
+#     # Runs at 1am every monday https://crontab.guru/#0_1_*_*_1
+#     - cron: 0 1 * * 1
+# 
 defaults:
   run:
     # use bash shell by default to ensure pipefail behavior is the default

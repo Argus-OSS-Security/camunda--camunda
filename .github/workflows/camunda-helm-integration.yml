@@ -2,14 +2,15 @@
 # owner: @camunda/engineering-operations
 name: Camunda Helm Chart Integration Test
 
-on:
-  schedule:
-    - cron: "0 5 * * 1-5"  # Mondays to Fridays, to keep it actionable
-  pull_request:
-    paths:
-      - ".github/workflows/camunda-helm-integration.yml"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "0 5 * * 1-5"  # Mondays to Fridays, to keep it actionable
+#   pull_request:
+#     paths:
+#       - ".github/workflows/camunda-helm-integration.yml"
+#   workflow_dispatch:
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
   GHA_BEST_PRACTICES_LINTER: enabled

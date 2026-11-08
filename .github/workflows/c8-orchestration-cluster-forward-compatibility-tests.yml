@@ -7,20 +7,21 @@
 ---
 name: C8 REST API Forward Compatibility Tests
 
-on:
-  schedule:
-    - cron: "0 2 * * *" # Daily at 2 AM UTC
-  workflow_dispatch:
-    inputs:
-      server_branch:
-        description: "Branch to build the server from (e.g., main, stable/8.9). Leave empty for default matrix."
-        required: false
-        type: string
-      test_branch:
-        description: "Branch to run the API tests from (e.g., stable/8.8, stable/8.9). Leave empty for default matrix."
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "0 2 * * *" # Daily at 2 AM UTC
+#   workflow_dispatch:
+#     inputs:
+#       server_branch:
+#         description: "Branch to build the server from (e.g., main, stable/8.9). Leave empty for default matrix."
+#         required: false
+#         type: string
+#       test_branch:
+#         description: "Branch to run the API tests from (e.g., stable/8.8, stable/8.9). Leave empty for default matrix."
+#         required: false
+#         type: string
+# 
 permissions:
   contents: read
 

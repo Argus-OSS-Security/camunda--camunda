@@ -37,16 +37,17 @@
 
 name: Rerun failed jobs reusable
 
-on:
-  workflow_call:
-    inputs:
-      test_owner:
-        required: true
-        type: string
-        description: >-
-          Team owning the calling workflow, e.g. '@camunda/data-layer'. Used to attribute this job's
-          build status in CI analytics.
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       test_owner:
+#         required: true
+#         type: string
+#         description: >-
+#           Team owning the calling workflow, e.g. '@camunda/data-layer'. Used to attribute this job's
+#           build status in CI analytics.
+# 
 jobs:
   rerun-failed-jobs:
     name: "Rerun jobs killed by runner shutdown"

@@ -5,76 +5,77 @@
 ---
 name: Stale Backport Tracker
 
-on:
-  schedule:
-    # Run every hour during weekday business hours (UTC): 6–18
-    # First run at 6 AM creates a new message; subsequent runs update it in-place.
-    - cron: '0 6-18 * * 1-5'
-  workflow_dispatch:
-    inputs:
-      target_branch:
-        description: 'Filter to a specific stable branch (e.g. "stable/8.8"). Leave empty for all.'
-        required: false
-        default: ''
-        type: string
-      dry_run:
-        description: 'Run in dry-run mode (no GitHub comments or labels will be created)'
-        required: false
-        default: true
-        type: boolean
-      notify_slack:
-        description: 'Post results to Slack'
-        required: false
-        default: false
-        type: boolean
-      notify_github:
-        description: 'Add comments to stale backport PRs'
-        required: false
-        default: false
-        type: boolean
-      stale_hours_threshold:
-        description: 'Hours after which a backport PR is considered stale'
-        required: false
-        default: '24'
-        type: string
-      slack_channel_id:
-        description: 'Slack channel ID to post the report to. Required for manual runs — the default #top-monorepo-ci channel is only used by the scheduled cron trigger.'
-        required: false
-        default: ''
-        type: string
-      target_backport_pr:
-        description: 'TEST ONLY: restrict GitHub notifications to a single backport PR number (e.g. "39478")'
-        required: false
-        default: ''
-        type: string
-  workflow_call:
-    inputs:
-      target_branch:
-        description: 'Filter to a specific stable branch'
-        required: false
-        default: ''
-        type: string
-      notify_slack:
-        description: 'Post results to Slack'
-        required: false
-        default: true
-        type: boolean
-      notify_github:
-        description: 'Add comments to stale backport PRs'
-        required: false
-        default: false
-        type: boolean
-      stale_hours_threshold:
-        description: 'Hours after which a backport PR is considered stale'
-        required: false
-        default: '24'
-        type: string
-      slack_channel_id:
-        description: 'Slack channel ID to post the report to. Required when notify_slack is true — the default #top-monorepo-ci channel is only used by the scheduled cron trigger.'
-        required: false
-        default: ''
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Run every hour during weekday business hours (UTC): 6–18
+#     # First run at 6 AM creates a new message; subsequent runs update it in-place.
+#     - cron: '0 6-18 * * 1-5'
+#   workflow_dispatch:
+#     inputs:
+#       target_branch:
+#         description: 'Filter to a specific stable branch (e.g. "stable/8.8"). Leave empty for all.'
+#         required: false
+#         default: ''
+#         type: string
+#       dry_run:
+#         description: 'Run in dry-run mode (no GitHub comments or labels will be created)'
+#         required: false
+#         default: true
+#         type: boolean
+#       notify_slack:
+#         description: 'Post results to Slack'
+#         required: false
+#         default: false
+#         type: boolean
+#       notify_github:
+#         description: 'Add comments to stale backport PRs'
+#         required: false
+#         default: false
+#         type: boolean
+#       stale_hours_threshold:
+#         description: 'Hours after which a backport PR is considered stale'
+#         required: false
+#         default: '24'
+#         type: string
+#       slack_channel_id:
+#         description: 'Slack channel ID to post the report to. Required for manual runs — the default #top-monorepo-ci channel is only used by the scheduled cron trigger.'
+#         required: false
+#         default: ''
+#         type: string
+#       target_backport_pr:
+#         description: 'TEST ONLY: restrict GitHub notifications to a single backport PR number (e.g. "39478")'
+#         required: false
+#         default: ''
+#         type: string
+#   workflow_call:
+#     inputs:
+#       target_branch:
+#         description: 'Filter to a specific stable branch'
+#         required: false
+#         default: ''
+#         type: string
+#       notify_slack:
+#         description: 'Post results to Slack'
+#         required: false
+#         default: true
+#         type: boolean
+#       notify_github:
+#         description: 'Add comments to stale backport PRs'
+#         required: false
+#         default: false
+#         type: boolean
+#       stale_hours_threshold:
+#         description: 'Hours after which a backport PR is considered stale'
+#         required: false
+#         default: '24'
+#         type: string
+#       slack_channel_id:
+#         description: 'Slack channel ID to post the report to. Required when notify_slack is true — the default #top-monorepo-ci channel is only used by the scheduled cron trigger.'
+#         required: false
+#         default: ''
+#         type: string
+# 
 defaults:
   run:
     shell: bash

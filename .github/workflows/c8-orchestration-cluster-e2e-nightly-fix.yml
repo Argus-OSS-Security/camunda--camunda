@@ -24,45 +24,46 @@ run-name: >-
   fix orchestration ${{ inputs.version }}
   — ${{ inputs.triage_run_url }}
 
-on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Camunda version (8.7, 8.8, 8.9, 8.10, or main)'
-        required: true
-      test_specs:
-        description: 'JSON array of {file, test_name, error, test_type, tasklist_mode?, database?}'
-        required: true
-      e2e_run_id:
-        description: 'Run ID of the failing E2E nightly (empty if E2E did not fail)'
-        required: false
-        default: ''
-      api_es_run_id:
-        description: 'Run ID of the failing API ES nightly (empty if API ES did not fail)'
-        required: false
-        default: ''
-      api_rdbms_run_id:
-        description: 'Run ID of the failing API RDBMS nightly (empty / N/A for 8.7, 8.8)'
-        required: false
-        default: ''
-      triage_run_url:
-        description: 'URL of the triage run that dispatched this (for PR body)'
-        required: false
-        default: ''
-      slack_thread_ts:
-        description: 'Slack thread ts to reply to (posted by triage)'
-        required: false
-        default: ''
-      slack_channel:
-        description: 'Slack channel ID for thread reply'
-        required: false
-        default: ''
-      send_slack_notification:
-        description: 'Post a Slack reply when done (true for nightly cron dispatches, false for on-demand runs)'
-        type: boolean
-        required: false
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       version:
+#         description: 'Camunda version (8.7, 8.8, 8.9, 8.10, or main)'
+#         required: true
+#       test_specs:
+#         description: 'JSON array of {file, test_name, error, test_type, tasklist_mode?, database?}'
+#         required: true
+#       e2e_run_id:
+#         description: 'Run ID of the failing E2E nightly (empty if E2E did not fail)'
+#         required: false
+#         default: ''
+#       api_es_run_id:
+#         description: 'Run ID of the failing API ES nightly (empty if API ES did not fail)'
+#         required: false
+#         default: ''
+#       api_rdbms_run_id:
+#         description: 'Run ID of the failing API RDBMS nightly (empty / N/A for 8.7, 8.8)'
+#         required: false
+#         default: ''
+#       triage_run_url:
+#         description: 'URL of the triage run that dispatched this (for PR body)'
+#         required: false
+#         default: ''
+#       slack_thread_ts:
+#         description: 'Slack thread ts to reply to (posted by triage)'
+#         required: false
+#         default: ''
+#       slack_channel:
+#         description: 'Slack channel ID for thread reply'
+#         required: false
+#         default: ''
+#       send_slack_notification:
+#         description: 'Post a Slack reply when done (true for nightly cron dispatches, false for on-demand runs)'
+#         type: boolean
+#         required: false
+#         default: false
+# 
 defaults:
   run:
     shell: bash

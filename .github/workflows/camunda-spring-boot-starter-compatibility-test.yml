@@ -3,27 +3,28 @@
 # owner: @camunda/core-features
 name: Camunda Spring Boot Starter Compatibility Tests
 
-on:
-  schedule:
-    # Runs at 02:00 every day https://crontab.guru/#0_2_*_*_*
-    - cron: '0 2 * * *'
-  workflow_dispatch:
-    inputs:
-      client_version:
-        description: 'Spring client version to test (e.g., 8.8.0 or 8.9-SNAPSHOT). Leave empty to test all versions.'
-        required: false
-        type: string
-      server_version:
-        description: 'Server version to test (e.g., 8.8.0 or 8.9-SNAPSHOT). Leave empty to test all versions.'
-        required: false
-        type: string
-      skip_cache:
-        description: 'Skip version cache and retest all combinations'
-        required: false
-        type: boolean
-        default: false
-    # To trigger manually
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Runs at 02:00 every day https://crontab.guru/#0_2_*_*_*
+#     - cron: '0 2 * * *'
+#   workflow_dispatch:
+#     inputs:
+#       client_version:
+#         description: 'Spring client version to test (e.g., 8.8.0 or 8.9-SNAPSHOT). Leave empty to test all versions.'
+#         required: false
+#         type: string
+#       server_version:
+#         description: 'Server version to test (e.g., 8.8.0 or 8.9-SNAPSHOT). Leave empty to test all versions.'
+#         required: false
+#         type: string
+#       skip_cache:
+#         description: 'Skip version cache and retest all combinations'
+#         required: false
+#         type: boolean
+#         default: false
+#     # To trigger manually
+# 
 permissions: {}
 
 defaults:

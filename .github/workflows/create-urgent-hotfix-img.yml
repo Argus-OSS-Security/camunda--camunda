@@ -21,26 +21,27 @@
 # Example: registry.camunda.cloud/hotfixes/camunda:8.6.1-SUPPORT-12345.abc123
 name: Create Urgent Hotfix Image
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'The branch to create hotfix images from (ignored if commit is specified)'
-        required: false
-        type: string
-      commit:
-        description: 'The specific commit SHA to create hotfix images from (must be full 40-character SHA - takes precedence over branch)'
-        required: false
-        type: string
-      support-ticket-id:
-        description: 'The support ticket ID (e.g. SUPPORT-12345, JIRA-123, ticket-456)'
-        required: true
-        type: string
-      components_with_versions:
-        description: 'Components to build with versions (e.g. camunda:8.6.1,operate:8.6.1)'
-        required: true
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: 'The branch to create hotfix images from (ignored if commit is specified)'
+#         required: false
+#         type: string
+#       commit:
+#         description: 'The specific commit SHA to create hotfix images from (must be full 40-character SHA - takes precedence over branch)'
+#         required: false
+#         type: string
+#       support-ticket-id:
+#         description: 'The support ticket ID (e.g. SUPPORT-12345, JIRA-123, ticket-456)'
+#         required: true
+#         type: string
+#       components_with_versions:
+#         description: 'Components to build with versions (e.g. camunda:8.6.1,operate:8.6.1)'
+#         required: true
+#         type: string
+# 
 defaults:
   run:
     shell: bash

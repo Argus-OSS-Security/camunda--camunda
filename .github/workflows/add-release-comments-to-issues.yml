@@ -26,22 +26,23 @@
 ---
 name: Add Release Comments to Issues
 
-on:
-  schedule:
-    # Run every Wednesday at 9:00 AM UTC
-    - cron: '0 9 * * 3'
-  workflow_dispatch:
-    inputs:
-      days_back:
-        description: 'Number of days back to look for releases (default: 10)'
-        required: false
-        default: '10'
-      dry_run:
-        description: 'Dry run - only log what would be done, do not post comments'
-        required: false
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Run every Wednesday at 9:00 AM UTC
+#     - cron: '0 9 * * 3'
+#   workflow_dispatch:
+#     inputs:
+#       days_back:
+#         description: 'Number of days back to look for releases (default: 10)'
+#         required: false
+#         default: '10'
+#       dry_run:
+#         description: 'Dry run - only log what would be done, do not post comments'
+#         required: false
+#         type: boolean
+#         default: false
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
   GHA_BEST_PRACTICES_LINTER: enabled

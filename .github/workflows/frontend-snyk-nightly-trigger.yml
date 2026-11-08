@@ -5,11 +5,12 @@
 ---
 name: Frontend Snyk Nightly Trigger
 
-on:
-  schedule:
-    - cron: '0 3 * * *' # 03:00 UTC daily
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '0 3 * * *' # 03:00 UTC daily
+#   workflow_dispatch: {}
+# 
 permissions:
   contents: read
 

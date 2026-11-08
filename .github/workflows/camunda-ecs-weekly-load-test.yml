@@ -6,47 +6,48 @@
 
 name: Camunda Weekly Benchmark on ECS
 
-on:
-  workflow_dispatch:
-    inputs:
-      image_tag:
-        description: >
-          Docker image tag to use (e.g., medic-2026-12-abcdef).
-          Images are expected at registry.camunda.cloud/team-zeebe/{camunda,starter,worker}:<tag>.
-        type: string
-        required: true
-      environment:
-        description: 'Target environment in AWS benchmark account. Use prod for weekly benchmarks, dev for testing and experiments.'
-        required: false
-        type: choice
-        options:
-          - prod
-          - dev
-        default: 'prod'
-      skip_destroy_previous:
-        description: 'Skip destroying the previous week''s benchmark'
-        required: false
-        type: boolean
-        default: false
-  workflow_call:
-    inputs:
-      image_tag:
-        description: >
-          Docker image tag to use. Images are expected at
-          registry.camunda.cloud/team-zeebe/{camunda,starter,worker}:<tag>.
-        type: string
-        required: true
-      environment:
-        description: 'Target environment in AWS benchmark account. Use prod for weekly benchmarks, dev for testing and experiments.'
-        required: false
-        type: string
-        default: 'prod'
-      skip_destroy_previous:
-        description: 'Skip destroying the previous week''s benchmark'
-        required: false
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       image_tag:
+#         description: >
+#           Docker image tag to use (e.g., medic-2026-12-abcdef).
+#           Images are expected at registry.camunda.cloud/team-zeebe/{camunda,starter,worker}:<tag>.
+#         type: string
+#         required: true
+#       environment:
+#         description: 'Target environment in AWS benchmark account. Use prod for weekly benchmarks, dev for testing and experiments.'
+#         required: false
+#         type: choice
+#         options:
+#           - prod
+#           - dev
+#         default: 'prod'
+#       skip_destroy_previous:
+#         description: 'Skip destroying the previous week''s benchmark'
+#         required: false
+#         type: boolean
+#         default: false
+#   workflow_call:
+#     inputs:
+#       image_tag:
+#         description: >
+#           Docker image tag to use. Images are expected at
+#           registry.camunda.cloud/team-zeebe/{camunda,starter,worker}:<tag>.
+#         type: string
+#         required: true
+#       environment:
+#         description: 'Target environment in AWS benchmark account. Use prod for weekly benchmarks, dev for testing and experiments.'
+#         required: false
+#         type: string
+#         default: 'prod'
+#       skip_destroy_previous:
+#         description: 'Skip destroying the previous week''s benchmark'
+#         required: false
+#         type: boolean
+#         default: false
+# 
 concurrency:
   group: ecs-weekly-${{ inputs.environment || 'prod' }}
   cancel-in-progress: false

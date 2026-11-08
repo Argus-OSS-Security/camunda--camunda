@@ -3,10 +3,11 @@
 ---
 name: chatops-command-ci-disable-cache
 
-on:
-  repository_dispatch:
-    types: [ci-disable-cache-command, ci-enable-cache-command]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   repository_dispatch:
+#     types: [ci-disable-cache-command, ci-enable-cache-command]
+# 
 env:
   NO_CACHE_LABEL: "ci:no-cache"
 

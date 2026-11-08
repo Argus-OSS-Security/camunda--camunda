@@ -16,21 +16,22 @@
 ---
 name: Close Stale Fix PRs
 
-on:
-  schedule:
-    - cron: '0 3 * * 1-5' # 03:00 UTC Mon-Fri, 1h before triage
-  workflow_dispatch:
-    inputs:
-      stale_days:
-        description: 'Close PRs created more than N days ago (default 1 — daily fresh start)'
-        default: '1'
-        required: false
-      dry_run:
-        description: 'Print actions but do not close anything'
-        type: boolean
-        default: false
-        required: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '0 3 * * 1-5' # 03:00 UTC Mon-Fri, 1h before triage
+#   workflow_dispatch:
+#     inputs:
+#       stale_days:
+#         description: 'Close PRs created more than N days ago (default 1 — daily fresh start)'
+#         default: '1'
+#         required: false
+#       dry_run:
+#         description: 'Print actions but do not close anything'
+#         type: boolean
+#         default: false
+#         required: false
+# 
 permissions:
   # write, and only for one reason: `--delete-branch` on `gh pr close` deletes a
   # ref, which is a contents mutation. It was briefly reduced to read while the

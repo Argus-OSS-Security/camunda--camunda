@@ -12,28 +12,29 @@
 ---
 name: Release Merge-back Conflict Check
 
-on:
-  workflow_dispatch:
-    inputs:
-      release_ref:
-        description: 'Release ref to check (e.g. release-8.9.0). Leave empty to auto-discover active release branches.'
-        required: false
-        default: ''
-        type: string
-      target_ref:
-        description: 'Target ref to merge back into (e.g. stable/8.9 or main). Only used together with release_ref; auto-derived if empty.'
-        required: false
-        default: ''
-        type: string
-      dry_run:
-        description: 'Dry run — render the alert and write it to the run summary instead of posting to Slack.'
-        required: false
-        default: false
-        type: boolean
-  schedule:
-    # Weekday mornings (02:00), mirroring the release dry-run cadence.
-    - cron: '0 2 * * 1-5'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       release_ref:
+#         description: 'Release ref to check (e.g. release-8.9.0). Leave empty to auto-discover active release branches.'
+#         required: false
+#         default: ''
+#         type: string
+#       target_ref:
+#         description: 'Target ref to merge back into (e.g. stable/8.9 or main). Only used together with release_ref; auto-derived if empty.'
+#         required: false
+#         default: ''
+#         type: string
+#       dry_run:
+#         description: 'Dry run — render the alert and write it to the run summary instead of posting to Slack.'
+#         required: false
+#         default: false
+#         type: boolean
+#   schedule:
+#     # Weekday mornings (02:00), mirroring the release dry-run cadence.
+#     - cron: '0 2 * * 1-5'
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
   GHA_BEST_PRACTICES_LINTER: enabled

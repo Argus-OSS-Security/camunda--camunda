@@ -5,11 +5,12 @@
 ---
 name: C8 Orchestration Cluster V2 Stateless Tests Nightly
 
-on:
-  schedule:
-    - cron: "0 0 * * *" # Run all tests at midnight UTC
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "0 0 * * *" # Run all tests at midnight UTC
+#   workflow_dispatch:
+# 
 permissions:
   contents: read
 

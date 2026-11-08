@@ -4,44 +4,45 @@
 ---
 name: ci-silence-incident
 
-on:
-  # Schedule and PR triggers only do dry runs (test integration with Vault, LDAP,
-  # Grafana and Slack without side effects)
-  schedule:
-    - cron: '17 6 * * 1'
-  pull_request:
-    paths:
-      - .github/workflows/ci-silence-incident.yml
-      - .github/scripts/ci-silence-incident.py
-  workflow_dispatch:
-    inputs:
-      workflow_job:
-        description: 'Value of the alert''s workflow_job label, copied verbatim from the alert (e.g. "Optimize E2E Smoke: * (@camunda/optimize)")'
-        required: true
-        type: string
-      incident:
-        description: 'Incident this silence belongs to, e.g. INC-8362'
-        required: true
-        type: string
-      days:
-        description: 'How long to silence, in days (maximum 7)'
-        required: false
-        default: '3'
-        type: string
-      alertname:
-        description: 'Alert rule to silence'
-        required: false
-        default: 'base-branch-unsuccessful-job'
-        type: string
-      grafana:
-        description: 'Which Grafana to silence in (always prod, unless testing)'
-        required: false
-        default: 'prod'
-        type: choice
-        options:
-          - prod
-          - dev
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   # Schedule and PR triggers only do dry runs (test integration with Vault, LDAP,
+#   # Grafana and Slack without side effects)
+#   schedule:
+#     - cron: '17 6 * * 1'
+#   pull_request:
+#     paths:
+#       - .github/workflows/ci-silence-incident.yml
+#       - .github/scripts/ci-silence-incident.py
+#   workflow_dispatch:
+#     inputs:
+#       workflow_job:
+#         description: 'Value of the alert''s workflow_job label, copied verbatim from the alert (e.g. "Optimize E2E Smoke: * (@camunda/optimize)")'
+#         required: true
+#         type: string
+#       incident:
+#         description: 'Incident this silence belongs to, e.g. INC-8362'
+#         required: true
+#         type: string
+#       days:
+#         description: 'How long to silence, in days (maximum 7)'
+#         required: false
+#         default: '3'
+#         type: string
+#       alertname:
+#         description: 'Alert rule to silence'
+#         required: false
+#         default: 'base-branch-unsuccessful-job'
+#         type: string
+#       grafana:
+#         description: 'Which Grafana to silence in (always prod, unless testing)'
+#         required: false
+#         default: 'prod'
+#         type: choice
+#         options:
+#           - prod
+#           - dev
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
   TEST_PRODUCT: Camunda

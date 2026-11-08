@@ -4,13 +4,14 @@
 ---
 name: Docs Build and Deploy
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch: {}
-
-# Commplete builds for every commit needed for confidenence
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#   workflow_dispatch: {}
+# 
+# # Commplete builds for every commit needed for confidenence
 concurrency:
   cancel-in-progress: false
   group: ${{ github.workflow }}-${{ github.ref }}

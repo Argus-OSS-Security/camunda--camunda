@@ -3,41 +3,42 @@
 ---
 name: "C8Run: Release"
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: "release branch of c8run to release (e.g., main, stable/8.7, etc.)"
-        type: string
-        required: true
-        default: ""
-      camundaVersion:
-        description: "Camunda minor version in format x.y"
-        type: string
-        required: true
-        default: ""
-      camundaAppsRelease:
-        description: "Name of the Camunda apps GitHub release page (e.g., 8.7.1, 8.8.0-alpha4, etc.)"
-        type: string
-        required: true
-        default: ""
-      publishToCamundaAppsRelease:
-        description: "Publish C8Run artifact to Camunda apps GitHub release page"
-        type: boolean
-        default: true
-      publishToCamundaDownloadCenter:
-        description: "Publish C8Run artifact to Camunda Download Center"
-        type: boolean
-        default: true
-      typePrerelease:
-        description: "Mark the GitHub release as prerelease (used for alphas only)"
-        type: boolean
-        default: false
-      artifactVersionSuffix:
-        description: 'Add extra suffix for release artifacts like "-rc" (Note: the dash should be included)'
-        type: string
-        default: ""
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: "release branch of c8run to release (e.g., main, stable/8.7, etc.)"
+#         type: string
+#         required: true
+#         default: ""
+#       camundaVersion:
+#         description: "Camunda minor version in format x.y"
+#         type: string
+#         required: true
+#         default: ""
+#       camundaAppsRelease:
+#         description: "Name of the Camunda apps GitHub release page (e.g., 8.7.1, 8.8.0-alpha4, etc.)"
+#         type: string
+#         required: true
+#         default: ""
+#       publishToCamundaAppsRelease:
+#         description: "Publish C8Run artifact to Camunda apps GitHub release page"
+#         type: boolean
+#         default: true
+#       publishToCamundaDownloadCenter:
+#         description: "Publish C8Run artifact to Camunda Download Center"
+#         type: boolean
+#         default: true
+#       typePrerelease:
+#         description: "Mark the GitHub release as prerelease (used for alphas only)"
+#         type: boolean
+#         default: false
+#       artifactVersionSuffix:
+#         description: 'Add extra suffix for release artifacts like "-rc" (Note: the dash should be included)'
+#         type: string
+#         default: ""
+# 
 permissions:
   actions: read
   attestations: none

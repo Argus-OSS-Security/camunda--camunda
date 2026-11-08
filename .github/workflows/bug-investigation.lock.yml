@@ -55,23 +55,24 @@
 #   - ghcr.io/github/github-mcp-server:v1.11.0@sha256:fbec75de11c255213fa08d80fb166abe73d851fff631c51c0079872967720699
 
 name: "Bug Investigation"
-on:
-  issues:
-    types:
-      - labeled
-  workflow_dispatch:
-    inputs:
-      aw_context:
-        default: ""
-        description: "Agent caller context (used internally by Agentic Workflows)."
-        required: false
-        type: string
-      item_number:
-        default: ""
-        description: The number of the issue, pull request, or discussion
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   issues:
+#     types:
+#       - labeled
+#   workflow_dispatch:
+#     inputs:
+#       aw_context:
+#         default: ""
+#         description: "Agent caller context (used internally by Agentic Workflows)."
+#         required: false
+#         type: string
+#       item_number:
+#         default: ""
+#         description: The number of the issue, pull request, or discussion
+#         required: false
+#         type: string
+# 
 permissions: {}
 
 concurrency:

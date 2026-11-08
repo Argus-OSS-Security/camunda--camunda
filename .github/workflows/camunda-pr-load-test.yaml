@@ -11,32 +11,33 @@
 # type: CI
 # owner: @camunda/reliability-testing
 name: Camunda Pull Request Benchmark
-on:
-  workflow_call:
-    inputs:
-      label:
-        description: 'PR label that triggered this benchmark (e.g., benchmark-elasticsearch-rest, benchmark-none-grpc)'
-        required: true
-        type: string
-      ref:
-        description: 'Branch ref to sanitize, deploy, and profile'
-        required: true
-        type: string
-      secondary-storage-type:
-        description: 'Storage backend (elasticsearch, opensearch, postgresql, mysql, mariadb, mssql, oracle, none)'
-        required: true
-        type: string
-      protocol:
-        description: 'Client protocol of the load-test workers and starters (rest, grpc)'
-        required: false
-        type: string
-        default: 'rest'
-      reuse-tag:
-        description: 'Pre-built image tag from the internal registry. When set, skips the image build step.'
-        required: false
-        type: string
-        default: ''
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       label:
+#         description: 'PR label that triggered this benchmark (e.g., benchmark-elasticsearch-rest, benchmark-none-grpc)'
+#         required: true
+#         type: string
+#       ref:
+#         description: 'Branch ref to sanitize, deploy, and profile'
+#         required: true
+#         type: string
+#       secondary-storage-type:
+#         description: 'Storage backend (elasticsearch, opensearch, postgresql, mysql, mariadb, mssql, oracle, none)'
+#         required: true
+#         type: string
+#       protocol:
+#         description: 'Client protocol of the load-test workers and starters (rest, grpc)'
+#         required: false
+#         type: string
+#         default: 'rest'
+#       reuse-tag:
+#         description: 'Pre-built image tag from the internal registry. When set, skips the image build step.'
+#         required: false
+#         type: string
+#         default: ''
+# 
 defaults:
   run:
     # use bash shell by default to ensure pipefail behavior is the default

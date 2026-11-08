@@ -9,20 +9,21 @@ defaults:
   run:
     shell: bash
 
-on:
-  push:
-    branches:
-    - main
-    - stable/*
-    - release/*
-    - release-*
-    tags:
-    - '*'
-  pull_request:
-    types:
-    - opened
-    - synchronize
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#     - main
+#     - stable/*
+#     - release/*
+#     - release-*
+#     tags:
+#     - '*'
+#   pull_request:
+#     types:
+#     - opened
+#     - synchronize
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
   GHA_BEST_PRACTICES_LINTER: enabled

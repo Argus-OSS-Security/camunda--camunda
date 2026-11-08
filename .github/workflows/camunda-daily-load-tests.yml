@@ -19,23 +19,24 @@
 # type: CI
 # owner: @camunda/reliability-testing
 name: Daily Camunda Platform Load Tests
-on:
-  workflow_dispatch:
-     inputs:
-      reuse-tag:
-        description: 'Docker image tag, that should be reused for the load tests. Allows to skip the docker image build step, can be used for recreating previous tests.'
-        type: string
-        default: ""
-        required: false
-      post-to-slack:
-        description: 'Post the results to the reliability-testing Slack channel (useful for an end-to-end test run). Always posts on the scheduled run regardless of this input.'
-        type: boolean
-        default: false
-        required: false
-  schedule:
-    # Runs at 2 am Monday-Friday https://crontab.guru/#0_2_*_*_1-5
-    - cron: 0 2 * * 1-5
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#      inputs:
+#       reuse-tag:
+#         description: 'Docker image tag, that should be reused for the load tests. Allows to skip the docker image build step, can be used for recreating previous tests.'
+#         type: string
+#         default: ""
+#         required: false
+#       post-to-slack:
+#         description: 'Post the results to the reliability-testing Slack channel (useful for an end-to-end test run). Always posts on the scheduled run regardless of this input.'
+#         type: boolean
+#         default: false
+#         required: false
+#   schedule:
+#     # Runs at 2 am Monday-Friday https://crontab.guru/#0_2_*_*_1-5
+#     - cron: 0 2 * * 1-5
+# 
 defaults:
   run:
     # use bash shell by default to ensure pipefail behavior is the default

@@ -28,27 +28,28 @@ name: Generate Docker Snapshot Tag
 permissions:
   contents: read
 
-on:
-  workflow_call:
-    inputs:
-      target_branch:
-        description: "Optional branch to resolve tags from (e.g. main or stable/8.9)"
-        required: false
-        default: ''
-        type: string
-    outputs:
-      version_tag:
-        description: >-
-          Versioned snapshot tag (e.g. "8.10-SNAPSHOT" on main, "8.8-SNAPSHOT"
-          on stable/8.8). Always set when the job runs.
-        value: ${{ jobs.get-snapshot-docker-version-tag.outputs.tag }}
-      snapshot_tag:
-        description: >-
-          Generic un-versioned "SNAPSHOT" tag. Only set on main so that
-          consumers can reference the latest development build without
-          hard-coding a version number. Empty on stable branches.
-        value: ${{ jobs.get-snapshot-docker-version-tag.outputs.snapshot_tag }}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       target_branch:
+#         description: "Optional branch to resolve tags from (e.g. main or stable/8.9)"
+#         required: false
+#         default: ''
+#         type: string
+#     outputs:
+#       version_tag:
+#         description: >-
+#           Versioned snapshot tag (e.g. "8.10-SNAPSHOT" on main, "8.8-SNAPSHOT"
+#           on stable/8.8). Always set when the job runs.
+#         value: ${{ jobs.get-snapshot-docker-version-tag.outputs.tag }}
+#       snapshot_tag:
+#         description: >-
+#           Generic un-versioned "SNAPSHOT" tag. Only set on main so that
+#           consumers can reference the latest development build without
+#           hard-coding a version number. Empty on stable branches.
+#         value: ${{ jobs.get-snapshot-docker-version-tag.outputs.snapshot_tag }}
+# 
 env:
   GHA_BEST_PRACTICES_LINTER: enabled
 

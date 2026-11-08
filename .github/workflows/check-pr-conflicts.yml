@@ -3,12 +3,13 @@
 ---
 name: Check for PR conflicts
 
-on:
-  schedule:
-  - cron: 23 1 * * 1-5
-  workflow_dispatch:
-  pull_request:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#   - cron: 23 1 * * 1-5
+#   workflow_dispatch:
+#   pull_request:
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
 

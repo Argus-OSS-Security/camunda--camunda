@@ -14,11 +14,12 @@
 
 name: check-action-pins
 
-on:
-  workflow_call:
-
-# pull-requests: write needed for the bot comment.
-# Fork PRs get a read-only token from GitHub — comment step silently skips.
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+# 
+# # pull-requests: write needed for the bot comment.
+# # Fork PRs get a read-only token from GitHub — comment step silently skips.
 permissions:
   contents: read
   pull-requests: write

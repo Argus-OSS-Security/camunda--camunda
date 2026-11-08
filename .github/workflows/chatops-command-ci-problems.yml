@@ -3,10 +3,11 @@
 ---
 name: chatops-command-ci-problems
 
-on:
-  repository_dispatch:
-    types: [ci-problems-command]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   repository_dispatch:
+#     types: [ci-problems-command]
+# 
 jobs:
   chatops-command-ci-problems:
     runs-on: ubuntu-latest

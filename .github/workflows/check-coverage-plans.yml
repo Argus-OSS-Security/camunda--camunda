@@ -13,57 +13,58 @@ name: Check coverage plans
 #
 # See camunda/camunda#65183.
 
-on:
-  pull_request:
-    paths:
-      - 'qa/**'
-      - 'configuration/src/main/**'
-      - 'configuration/src/test/**'
-      - 'operate/client/**'
-      - 'service/src/main/**'
-      - 'service/src/test/**'
-      - 'webapp/client/**'
-      - '.github/scripts/coverage-plan-check/**'
-      - '.github/workflows/check-coverage-plans.yml'
-  # Every directory the current plans point at. After adding a plan, check it
-  # against what the plans actually reference rather than guessing:
-  #
-  #   grep -h '^\s*- path:' qa/coverage/*.yml | sed 's/.*path: *//' \
-  #     | cut -d/ -f1-2 | sort -u
-  #
-  # That prints what is referenced, not the list below -- each entry here is
-  # that widened to a prefix worth filtering on. It is a check, not a
-  # generator.
-  #
-  # `configuration/` was missing, and the cost was real: the PR that moved
-  # AuditLogTest.java into a `data` package touched no filtered path, so this
-  # check never ran on it and it merged with a plan pointing at a file that no
-  # longer existed. The unfiltered push run below caught it afterwards, on
-  # main, as a paging alert.
-  #
-  # So the filter decides WHEN a break is caught, not whether. The push and
-  # schedule runs are the backstop, which is why a stale filter costs one
-  # merge of delay rather than silence.
-  #
-  # Kept deliberately broad: `webapp/client/**` rather than the
-  # `webapp/client/apps/**` the paths strictly imply. Narrowing to exactly
-  # what today's plans reference buys nothing and misses the next one.
-  #
-  # The `src/main/**` entries are NOT referenced by any plan, and are here
-  # anyway. The planned-case report below matches a Maven test package against
-  # the main package it mirrors, so the pull request it most wants to speak to
-  # -- one that changes AuditLog.java and has no test yet -- touches only main
-  # sources. Deriving this list from the plans alone left that pull request
-  # starting no run at all, so the report advertised a match it could never
-  # make. Whatever a plan points at under `<module>/src/test/`, the matching
-  # `<module>/src/main/` belongs here too.
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: '0 6 * * 1-5'  # weekdays at 06:00 UTC
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - 'qa/**'
+#       - 'configuration/src/main/**'
+#       - 'configuration/src/test/**'
+#       - 'operate/client/**'
+#       - 'service/src/main/**'
+#       - 'service/src/test/**'
+#       - 'webapp/client/**'
+#       - '.github/scripts/coverage-plan-check/**'
+#       - '.github/workflows/check-coverage-plans.yml'
+#   # Every directory the current plans point at. After adding a plan, check it
+#   # against what the plans actually reference rather than guessing:
+#   #
+#   #   grep -h '^\s*- path:' qa/coverage/*.yml | sed 's/.*path: *//' \
+#   #     | cut -d/ -f1-2 | sort -u
+#   #
+#   # That prints what is referenced, not the list below -- each entry here is
+#   # that widened to a prefix worth filtering on. It is a check, not a
+#   # generator.
+#   #
+#   # `configuration/` was missing, and the cost was real: the PR that moved
+#   # AuditLogTest.java into a `data` package touched no filtered path, so this
+#   # check never ran on it and it merged with a plan pointing at a file that no
+#   # longer existed. The unfiltered push run below caught it afterwards, on
+#   # main, as a paging alert.
+#   #
+#   # So the filter decides WHEN a break is caught, not whether. The push and
+#   # schedule runs are the backstop, which is why a stale filter costs one
+#   # merge of delay rather than silence.
+#   #
+#   # Kept deliberately broad: `webapp/client/**` rather than the
+#   # `webapp/client/apps/**` the paths strictly imply. Narrowing to exactly
+#   # what today's plans reference buys nothing and misses the next one.
+#   #
+#   # The `src/main/**` entries are NOT referenced by any plan, and are here
+#   # anyway. The planned-case report below matches a Maven test package against
+#   # the main package it mirrors, so the pull request it most wants to speak to
+#   # -- one that changes AuditLog.java and has no test yet -- touches only main
+#   # sources. Deriving this list from the plans alone left that pull request
+#   # starting no run at all, so the report advertised a match it could never
+#   # make. Whatever a plan points at under `<module>/src/test/`, the matching
+#   # `<module>/src/main/` belongs here too.
+#   push:
+#     branches:
+#       - main
+#   schedule:
+#     - cron: '0 6 * * 1-5'  # weekdays at 06:00 UTC
+#   workflow_dispatch:
+# 
 permissions: {}
 
 defaults:

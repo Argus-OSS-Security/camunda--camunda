@@ -5,16 +5,17 @@
 ---
 name: Statistics Weekly
 
-on:
-  schedule:
-    - cron: '0 6 * * 1'  # Monday
-  pull_request:
-    paths:
-      - '.github/workflows/statistics-weekly.yml'
-      - '.ci/scripts/ci/setup-medic-lookup.sh'
-      - '.ci/scripts/ci/create-ci-slo-report.sh'
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '0 6 * * 1'  # Monday
+#   pull_request:
+#     paths:
+#       - '.github/workflows/statistics-weekly.yml'
+#       - '.ci/scripts/ci/setup-medic-lookup.sh'
+#       - '.ci/scripts/ci/create-ci-slo-report.sh'
+#   workflow_dispatch: {}
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
   GHA_BEST_PRACTICES_LINTER: enabled

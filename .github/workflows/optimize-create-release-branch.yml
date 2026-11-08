@@ -1,16 +1,17 @@
 # type: Release
 # DEPRECATED: This workflow is deprecated and should be removed when 8.7 reaches EOL in favor of Monorepo Release Process camunda/40184.
 name: Optimize Create Release Branch
-on:
-  workflow_dispatch:
-    inputs:
-      release_version:
-        description: "Release version"
-        required: true
-      release_base_branch:
-        description: "Release base branch"
-        required: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       release_version:
+#         description: "Release version"
+#         required: true
+#       release_base_branch:
+#         description: "Release base branch"
+#         required: true
+# 
 jobs:
   create_release_branch:
     name: Create release branch

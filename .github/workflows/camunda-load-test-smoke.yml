@@ -12,52 +12,53 @@
 # type: CI
 # owner: @camunda/reliability-testing
 name: Camunda Smoke Load Test
-on:
-  workflow_call:
-    inputs:
-      target-version:
-        description: 'Setup version subfolder (main, stable-89, stable-88, stable-87)'
-        type: string
-        default: "main"
-        required: false
-      orchestration-tag:
-        description: 'Docker Hub image tag to use (e.g. SNAPSHOT, 8.9-SNAPSHOT)'
-        type: string
-        default: "SNAPSHOT"
-        required: false
-      ref:
-        description: 'Git ref to checkout (branch or SHA). Defaults to PR head.'
-        type: string
-        default: ""
-        required: false
-      base-ref:
-        description: 'Git ref used as the "old" version for the upgrade chain. Defaults to main.'
-        type: string
-        default: "main"
-        required: false
-  workflow_dispatch:
-    inputs:
-      target-version:
-        description: 'Setup version subfolder (main, stable-89, stable-88, stable-87)'
-        type: string
-        default: "main"
-        required: false
-      orchestration-tag:
-        description: 'Docker Hub image tag to use (e.g. SNAPSHOT, 8.9-SNAPSHOT)'
-        type: string
-        default: "SNAPSHOT"
-        required: false
-      ref:
-        description: 'Git ref to checkout for the smoke test (branch or SHA)'
-        type: string
-        default: ""
-        required: false
-      base-ref:
-        description: 'Git ref used as the "old" version for the upgrade chain. Defaults to main.'
-        type: string
-        default: "main"
-        required: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       target-version:
+#         description: 'Setup version subfolder (main, stable-89, stable-88, stable-87)'
+#         type: string
+#         default: "main"
+#         required: false
+#       orchestration-tag:
+#         description: 'Docker Hub image tag to use (e.g. SNAPSHOT, 8.9-SNAPSHOT)'
+#         type: string
+#         default: "SNAPSHOT"
+#         required: false
+#       ref:
+#         description: 'Git ref to checkout (branch or SHA). Defaults to PR head.'
+#         type: string
+#         default: ""
+#         required: false
+#       base-ref:
+#         description: 'Git ref used as the "old" version for the upgrade chain. Defaults to main.'
+#         type: string
+#         default: "main"
+#         required: false
+#   workflow_dispatch:
+#     inputs:
+#       target-version:
+#         description: 'Setup version subfolder (main, stable-89, stable-88, stable-87)'
+#         type: string
+#         default: "main"
+#         required: false
+#       orchestration-tag:
+#         description: 'Docker Hub image tag to use (e.g. SNAPSHOT, 8.9-SNAPSHOT)'
+#         type: string
+#         default: "SNAPSHOT"
+#         required: false
+#       ref:
+#         description: 'Git ref to checkout for the smoke test (branch or SHA)'
+#         type: string
+#         default: ""
+#         required: false
+#       base-ref:
+#         description: 'Git ref used as the "old" version for the upgrade chain. Defaults to main.'
+#         type: string
+#         default: "main"
+#         required: false
+# 
 concurrency:
   group: smoke-load-test-${{ github.event.pull_request.id || inputs.ref }}-${{ inputs.target-version || 'main' }}
   cancel-in-progress: true

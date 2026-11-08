@@ -4,39 +4,40 @@
 ---
 name: Docker Build, Helm Deploy & E2E Tests (SaaS + Helm)
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Docker image version tag (defaults to ...-mq<PR_NUMBER>-run<run_id>-a<attempt> for merge queue, ...-dispatch-run<run_id>-a<attempt> for manual dispatch, or ...-main-run<run_id>-a<attempt> for push to main)'
-        type: string
-        required: false
-      helmRepositoryBranchName:
-        description: 'Helm repository branch name'
-        type: string
-        default: 'main'
-      helmRepositoryDirName:
-        description: 'Helm chart directory name'
-        type: string
-        default: 'camunda-platform-8.11'
-      scenario:
-        description: 'Test scenario'
-        type: string
-        default: 'alwaysgreen'
-      deployment-ttl:
-        description: 'Deployment TTL'
-        type: string
-        default: ''
-      shortname:
-        description: 'Short name for the deployment'
-        type: string
-        default: 'agrn'
-
-# Limit workflow to 1 concurrent run per ref (branch) and trigger event (push/schedule/etc): new commit -> old runs are canceled to save costs
-# Exception for main + stable/* branches: complete builds for every commit needed for confidence
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#   workflow_dispatch:
+#     inputs:
+#       version:
+#         description: 'Docker image version tag (defaults to ...-mq<PR_NUMBER>-run<run_id>-a<attempt> for merge queue, ...-dispatch-run<run_id>-a<attempt> for manual dispatch, or ...-main-run<run_id>-a<attempt> for push to main)'
+#         type: string
+#         required: false
+#       helmRepositoryBranchName:
+#         description: 'Helm repository branch name'
+#         type: string
+#         default: 'main'
+#       helmRepositoryDirName:
+#         description: 'Helm chart directory name'
+#         type: string
+#         default: 'camunda-platform-8.11'
+#       scenario:
+#         description: 'Test scenario'
+#         type: string
+#         default: 'alwaysgreen'
+#       deployment-ttl:
+#         description: 'Deployment TTL'
+#         type: string
+#         default: ''
+#       shortname:
+#         description: 'Short name for the deployment'
+#         type: string
+#         default: 'agrn'
+# 
+# # Limit workflow to 1 concurrent run per ref (branch) and trigger event (push/schedule/etc): new commit -> old runs are canceled to save costs
+# # Exception for main + stable/* branches: complete builds for every commit needed for confidence
 concurrency:
   group: ${{ format('{0}-{1}-{2}', github.workflow, github.event_name, (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/stable/')) && github.sha || github.ref) }}
   cancel-in-progress: true

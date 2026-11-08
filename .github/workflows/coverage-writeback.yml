@@ -29,11 +29,12 @@ name: Coverage plan write-back
 # Until a plan points at a spec whose titles carry ids, this job correctly finds
 # nothing. That is the intended resting state, not a misconfiguration.
 
-on:
-  schedule:
-    - cron: '41 7 * * 2'  # Tuesdays, 07:41 UTC
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '41 7 * * 2'  # Tuesdays, 07:41 UTC
+#   workflow_dispatch:
+# 
 permissions: {}
 
 # Both triggers rewrite ONE fixed branch and open ONE PR on it, so two runs at

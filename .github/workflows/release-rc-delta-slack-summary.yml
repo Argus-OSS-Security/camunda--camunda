@@ -8,28 +8,29 @@
 ---
 name: RC Delta Slack Summary
 
-on:
-  workflow_dispatch:
-    inputs:
-      rc_version:
-        description: 'RC tag to summarize, e.g. "8.9.0-alpha3-rc2" or "8.9.0-rc2"'
-        required: true
-        type: string
-      slack_channel_id:
-        description: 'Slack channel ID to post the digest to'
-        required: true
-        type: string
-      slack_thread_id:
-        description: 'Slack thread (message ts) to post into. Leave empty to post to the channel root.'
-        required: false
-        default: ''
-        type: string
-      dry_run:
-        description: 'Dry run — compute and log the digest, do not post to Slack'
-        required: false
-        default: true
-        type: boolean
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       rc_version:
+#         description: 'RC tag to summarize, e.g. "8.9.0-alpha3-rc2" or "8.9.0-rc2"'
+#         required: true
+#         type: string
+#       slack_channel_id:
+#         description: 'Slack channel ID to post the digest to'
+#         required: true
+#         type: string
+#       slack_thread_id:
+#         description: 'Slack thread (message ts) to post into. Leave empty to post to the channel root.'
+#         required: false
+#         default: ''
+#         type: string
+#       dry_run:
+#         description: 'Dry run — compute and log the digest, do not post to Slack'
+#         required: false
+#         default: true
+#         type: boolean
+# 
 env:
   TEST_OWNER: '@camunda/engineering-operations'
   GHA_BEST_PRACTICES_LINTER: enabled

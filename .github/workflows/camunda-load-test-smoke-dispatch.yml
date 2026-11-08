@@ -5,16 +5,17 @@
 # type: CI
 # owner: @camunda/reliability-testing
 name: Camunda Smoke Load Test Dispatch
-on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'load-tests/setup/**'
-      - '.github/workflows/camunda-load-test.yml'
-      - '.github/workflows/camunda-load-test-smoke.yml'
-      - '.github/workflows/camunda-load-test-smoke-dispatch.yml'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     branches:
+#       - main
+#     paths:
+#       - 'load-tests/setup/**'
+#       - '.github/workflows/camunda-load-test.yml'
+#       - '.github/workflows/camunda-load-test-smoke.yml'
+#       - '.github/workflows/camunda-load-test-smoke-dispatch.yml'
+# 
 concurrency:
   group: smoke-dispatch-${{ github.event.pull_request.id }}
   cancel-in-progress: true
